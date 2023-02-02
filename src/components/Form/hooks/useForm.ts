@@ -54,6 +54,7 @@ export default function useForm({ initialValues, validate }: Props) {
 
   return {
     values,
+    setValues,
     touched,
     errors,
     setErrors,

@@ -8,13 +8,12 @@ type Props = {
 
 export default function MsgFromServer({ type, message }: Props) {
   const { errors, values }: any = useContext(FormContext);
-  const value = values[type];
   const validateError = errors[type];
   const [checkMsg, setCheckMsg] = useState("");
 
   useEffect(() => {
     setCheckMsg("");
-  }, [value]);
+  }, [values]);
 
   useEffect(() => {
     setCheckMsg(message);

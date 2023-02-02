@@ -12,7 +12,6 @@ async function fetchProduct(currentPage: number) {
 export default function useProductList() {
   const [currentPage, setCurrentPage] = useState(1);
   const [maxProductPage, setMaxProductPage] = useState(5);
-
   const { data, isError, error, isLoading }: any = useQuery(
     ["products", currentPage],
     () => fetchProduct(currentPage)

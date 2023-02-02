@@ -13,7 +13,6 @@ export default function Form({ onSubmit, children }: FormProps) {
     e.preventDefault();
 
     if (canSubmit()) {
-      console.log("sb");
       return;
     } else {
       onSubmit(values);

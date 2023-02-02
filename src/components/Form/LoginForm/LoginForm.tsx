@@ -3,7 +3,6 @@ import ValidationMessage from "src/components/Form/ValidationMessage";
 import Form from "src/components/Form/Form";
 import useLoginForm from "./useLoginForm";
 import SubmitBtn from "src/components/Form/SubmitBtn";
-import MsgFromServer from "./../SignUpForm/MsgFromServer";
 
 export default function LoginForm() {
   const { msgFromServer, onSubmit, setLoginType } = useLoginForm();
@@ -22,7 +21,7 @@ export default function LoginForm() {
         <ValidationMessage name="username" />
         <InputField type="password" name="password" />
         <ValidationMessage name="password" />
-        <MsgFromServer type="login" message={msgFromServer["login"]} />
+        <span>{msgFromServer}</span>
         <SubmitBtn BtnText={"로그인"} />
       </Form>
     </>

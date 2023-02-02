@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "src/lib/axiosInstance";
@@ -15,10 +15,12 @@ async function login(userInfo: UserInfo): Promise<any> {
 
 export default function useLoginForm() {
   const navigate = useNavigate();
-  const [msgFromServer, setMsgFromServer] = useState({
-    login: "",
-  });
+  const [msgFromServer, setMsgFromServer] = useState("");
   const [loginType, setLoginType] = useState<"BUYER" | "SELLER">("BUYER");
+
+  useEffect(() => {
+    localStorage.setItem("loginType", loginType);
+  }, [loginType]);
 
   const { mutate: loginMutate } = useMutation(
     (userInfo: UserInfo) => login(userInfo),
@@ -29,10 +31,8 @@ export default function useLoginForm() {
         navigate("/", { replace: true });
       },
       onError: (error: any) => {
-        console.log(error);
-
-        if (error.data.FAIL_Message) {
-          setMsgFromServer({ login: error.data.FAIL_Message });
+        if (error.response.data.FAIL_Message) {
+          setMsgFromServer(error.response.data.FAIL_Message);
           return;
         }
       },

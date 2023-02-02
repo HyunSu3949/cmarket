@@ -15,7 +15,6 @@ export default function SignUpForm() {
     validateUsernameMutate,
     msgFromServer: message,
   } = useSignUpForm();
-  console.log(message);
 
   const { errors, values }: any = useContext(FormContext);
 
