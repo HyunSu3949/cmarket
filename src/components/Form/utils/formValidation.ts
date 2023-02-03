@@ -46,6 +46,24 @@ export function signUpValidate(name: string, value: string) {
       }
       return "";
     },
+
+    company_registration_number: (value: string) => {
+      if (!value) {
+        return "필수 정보입니다.";
+      }
+      if (!/^\d{10}$/.test(value)) {
+        return "사업자 등록번호는 10자리 숫자여야 합니다.";
+      }
+
+      return "";
+    },
+
+    store_name: (value: string) => {
+      if (!value) {
+        return "필수 정보입니다.";
+      }
+      return "";
+    },
   };
 
   return validates[name](value);

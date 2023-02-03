@@ -2,6 +2,7 @@ import SignUpForm from "src/components/Form/SignUpForm/Buyer/SignUpForm";
 import { useState } from "react";
 import { signUpValidate } from "./../../components/Form/utils/formValidation";
 import FormProvider from "src/components/Form/FormProvider";
+import SellerSignUpForm from "src/components/Form/SignUpForm/Seller/SellerSignUpForm";
 
 export default function SignUpPage() {
   const [type, setType] = useState("BUYER");
@@ -12,6 +13,15 @@ export default function SignUpPage() {
     password2: "",
     phone_number: "",
     name: "",
+  };
+  const initialValues_seller = {
+    username: "",
+    password: "",
+    password2: "",
+    phone_number: "",
+    name: "",
+    company_registration_number: "",
+    store_name: "",
   };
   const validate = signUpValidate;
 
@@ -29,7 +39,11 @@ export default function SignUpPage() {
         <FormProvider initialValues={initialValues_buyer} validate={validate}>
           <SignUpForm />
         </FormProvider>
-      ) : null}
+      ) : (
+        <FormProvider initialValues={initialValues_seller} validate={validate}>
+          <SellerSignUpForm />
+        </FormProvider>
+      )}
     </div>
   );
 }

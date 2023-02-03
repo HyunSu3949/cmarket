@@ -6,7 +6,7 @@ async function orderProduct(orderInfo: any) {
   return result;
 }
 
-export default function useOrderForm({ props }: any) {
+export default function useOrderForm(props: any) {
   const { mutate: orderMutate } = useMutation(
     (orderInfo) => orderProduct(orderInfo),
     {
@@ -16,7 +16,8 @@ export default function useOrderForm({ props }: any) {
     }
   );
 
-  const onSubmit = async (values: any) => {
+  //const {orderState} = useOrder();
+  const onSubmit = async (formValues: any) => {
     const { order_kind } = props;
 
     if (order_kind === ("direct_order" || "cart_one_order")) {
@@ -27,10 +28,11 @@ export default function useOrderForm({ props }: any) {
         quantity,
         order_kind,
         total_price,
-        ...values,
+        ...formValues,
       };
       orderMutate({ ...orderInfo });
     } else if (order_kind === "cart_order") {
+      console.log(props);
     }
   };
 

@@ -1,9 +1,14 @@
 import LoginForm from "src/components/Form/LoginForm/LoginForm";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { loginValidate } from "src/components/Form/utils/formValidation";
 import FormProvider from "src/components/Form/FormProvider";
 
 export default function LoginPage() {
+  const navigate = useNavigate();
+  if (localStorage.getItem("token")) {
+    navigate("/", { replace: true });
+  }
+
   const initialValues = {
     username: "",
     password: "",

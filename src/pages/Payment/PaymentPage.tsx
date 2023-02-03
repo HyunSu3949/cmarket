@@ -2,24 +2,23 @@ import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import FormProvider from "src/components/Form/FormProvider";
 import OrderForm from "src/components/Form/OrderForm/OrderForm";
-import OrderProducts from "src/components/Payment/OrderProducts/OrderProducts";
 import { orderValidate } from "./../../components/Form/utils/formValidation";
+import OrderProductList from "./../../components/Payment/OrderProductList/OrderProductList";
+import OrderProduct from "src/components/Payment/OrderProduct/OrderProduct";
+import DirectOrderProduct from "src/components/Payment/DirectOrderProduct/DirectOrderProduct";
+type Props = {
+  order_kind: "cart_order" | "cart_one_order" | "direct_order";
+  product_id: number;
+  quantity: number;
+};
 
 export default function PaymentPage() {
   const location = useLocation();
+  const props = { ...location.state };
 
-  const [props, setProps] = useState({
-    price: 0,
-    product_name: "",
-    quantity: 0,
-    seller_store: "",
-    image: "",
-    product_id: "",
-    order_kind: "",
-    shipping_fee: 0,
-  });
+  const { order_kind, product_id, quantity }: Props = props;
 
-  const initialValues = {
+  const formValues = {
     receiver: "",
     receiver_phone_number: "",
     address: "",
@@ -29,25 +28,20 @@ export default function PaymentPage() {
 
   const validate = orderValidate;
 
-  useEffect(() => {
-    console.log(location.state);
-
-    const { order_kind } = location.state;
-    if (order_kind === ("direct_order" || "cart_one_order")) {
-      setProps({
-        ...props,
-        ...location.state,
-      });
-    } else if (order_kind === "cart_order") {
-    }
-  }, []);
+  const returnComponent = {
+    cart_order: <OrderProductList />,
+    cart_one_order: <OrderProduct product_id={product_id} />,
+    direct_order: (
+      <DirectOrderProduct product_id={product_id} quantity={quantity} />
+    ),
+  };
 
   return (
     <div>
       <div>주문목록</div>
-      <OrderProducts {...props} />
-      <FormProvider initialValues={initialValues} validate={validate}>
-        <OrderForm props={props}></OrderForm>
+      {returnComponent[order_kind]}
+      <FormProvider initialValues={formValues} validate={validate}>
+        <OrderForm {...props}></OrderForm>
       </FormProvider>
     </div>
   );

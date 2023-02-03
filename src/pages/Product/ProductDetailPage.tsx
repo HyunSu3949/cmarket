@@ -1,7 +1,9 @@
-import useProductDetail from "src/components/ProductDetail/useProductDetail";
+import useProductDetail from "src/components/hooks/useProductDetailPage";
 import { useParams } from "react-router-dom";
 import AddCartButton from "src/components/ProductDetail/Button/AddCartButton/AddCartButton";
+import { useNavigate } from "react-router-dom";
 export default function ProductDetailPage() {
+  const navigate = useNavigate();
   const { product_id = 0 } = useParams();
   const id = +product_id;
   const order_kind = "direct_order";
@@ -10,15 +12,23 @@ export default function ProductDetailPage() {
     isLoading,
     quantity,
     setQuantity,
-    handleAddCart,
-    handlePurchase,
-  } = useProductDetail({ product_id: id, order_kind });
+  } = useProductDetail({ product_id: id });
 
   if (isLoading) {
     return <p>...</p>;
   }
 
   const { image, price, product_name, store_name }: any = data.data;
+
+  const handlePurchase = () => {
+    navigate(`/payment`, {
+      state: {
+        ...data?.data,
+        order_kind,
+        quantity,
+      },
+    });
+  };
 
   return (
     <div>
