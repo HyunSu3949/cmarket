@@ -1,17 +1,12 @@
 import useProductList from "src/components/Home/ProductList/useProductList";
 import Product from "src/components/Home/Product/Product";
 import * as S from "./ProductListStyle";
+import Pagination from "react-js-pagination";
+import NumberingPage from "src/components/Home/NumberingPage/NumberingPage";
 
 export default function ProductList() {
-  const {
-    data,
-    isLoading,
-    currentPage,
-    goToNextPage,
-    goToPrevPage,
-    maxProductPage,
-  } = useProductList();
-
+  const { data, isLoading, currentPage, setPageNumber, totalCount } =
+    useProductList();
   if (isLoading) return <div>...</div>;
   return (
     <>
@@ -20,16 +15,15 @@ export default function ProductList() {
           <Product key={item.product_id} {...item} />
         ))}
       </S.List>
-      <div>
-        <button disabled={currentPage <= 1} onClick={goToPrevPage}>
-          Previous page
-        </button>
-        <span>Page {currentPage}</span>
-        <button disabled={currentPage >= maxProductPage} onClick={goToNextPage}>
-          Next page
-        </button>
-      </div>
-      <hr />
+      <Pagination
+        activePage={currentPage} // 현재 페이지
+        totalItemsCount={totalCount}
+        itemsCountPerPage={15} // 총 아이템 갯수
+        pageRangeDisplayed={5} // paginator의 페이지 범위
+        prevPageText={"‹-"} // "이전"을 나타낼 텍스트
+        nextPageText={"-›"} // "다음"을 나타낼 텍스트
+        onChange={(pageNumber) => setPageNumber(pageNumber)} // 페이지 변경을 핸들링하는 함수
+      />
     </>
   );
 }
