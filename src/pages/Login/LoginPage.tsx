@@ -2,13 +2,15 @@ import LoginForm from "src/components/Form/LoginForm/LoginForm";
 import { Link, useNavigate } from "react-router-dom";
 import { loginValidate } from "src/components/Form/utils/formValidation";
 import FormProvider from "src/components/Form/FormProvider";
+import { useEffect, useContext } from "react";
+import { AuthContext } from "src/lib/auth/AuthProvider/AuthProvider";
 
 export default function LoginPage() {
   const navigate = useNavigate();
-  if (localStorage.getItem("token")) {
-    navigate("/", { replace: true });
+  const { isLogedIn } = useContext(AuthContext);
+  if (isLogedIn) {
+    navigate("/");
   }
-
   const initialValues = {
     username: "",
     password: "",

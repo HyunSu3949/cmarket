@@ -1,12 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "src/lib/axiosInstance";
+import { AuthContext } from "src/lib/auth/AuthProvider/AuthProvider";
 
 type UserInfo = {
   username: string;
   password: string;
-  login_type: "BUYER" | "SELLER";
+  login_type: string;
 };
 
 async function login(userInfo: UserInfo): Promise<any> {
@@ -15,12 +16,8 @@ async function login(userInfo: UserInfo): Promise<any> {
 
 export default function useLoginForm() {
   const navigate = useNavigate();
+  const { setLoginType, loginType, setIsLogedIn } = useContext(AuthContext);
   const [msgFromServer, setMsgFromServer] = useState("");
-  const [loginType, setLoginType] = useState<"BUYER" | "SELLER">("BUYER");
-
-  useEffect(() => {
-    localStorage.setItem("loginType", loginType);
-  }, [loginType]);
 
   const { mutate: loginMutate } = useMutation(
     (userInfo: UserInfo) => login(userInfo),
@@ -28,6 +25,8 @@ export default function useLoginForm() {
       onSuccess: (data) => {
         const token = data.data.token;
         localStorage.setItem("token", token);
+        localStorage.setItem("login_type", loginType);
+        setIsLogedIn(true);
         navigate("/", { replace: true });
       },
       onError: (error: any) => {

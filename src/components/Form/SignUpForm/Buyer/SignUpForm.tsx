@@ -18,13 +18,12 @@ export default function SignUpForm() {
 
   const { errors, values }: any = useContext(FormContext);
 
-  const usernameValue = values["username"];
-  const usernameError = errors["username"];
-
   const handleClick = async () => {
+    const usernameValue = values["username"];
     validateUsernameMutate(usernameValue);
   };
 
+  const usernameError = errors["username"];
   const disabled = usernameError !== "";
 
   return (

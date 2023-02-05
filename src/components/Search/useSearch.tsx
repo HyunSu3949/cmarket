@@ -15,9 +15,7 @@ export default function useSearch() {
   };
 
   useQuery(["search"], () => searchProduct(keyword), {
-    onSuccess: (data) => {
-      console.log(data);
-    },
+    onSuccess: (data) => {},
   });
 
   return { setKeyword, onChange };

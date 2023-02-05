@@ -1,9 +1,6 @@
-import React, { useState } from "react";
 import axiosInstance from "src/lib/axiosInstance";
 import { useQuery, useMutation, useQueries } from "react-query";
 import { queryClient } from "src/lib/react-query/queryClient";
-import Product from "./../Home/Product/Product";
-import useProductDetail from "src/components/hooks/useProductDetailPage";
 
 async function getCartList() {
   const result = await axiosInstance.get(`/cart/`);

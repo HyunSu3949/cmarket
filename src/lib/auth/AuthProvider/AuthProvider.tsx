@@ -1,39 +1,45 @@
-import { useState, useCallback, createContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useMutation } from "react-query";
-import axiosInstance from "src/lib/axiosInstance";
-import { Outlet } from "react-router-dom";
-import LoginPage from "src/pages/Login/LoginPage";
+import { useState, createContext, Dispatch, SetStateAction } from "react";
 
-type UserInfo = {
-  username: string;
-  password: string;
-  login_type: "BUYER" | "SELLER";
+type Context = {
+  isLogedIn: boolean;
+  loginType: string;
+  handleLogout: () => void;
+  setIsLogedIn: Dispatch<SetStateAction<boolean>>;
+  setLoginType: Dispatch<SetStateAction<string>>;
 };
+export const AuthContext = createContext<Context>({
+  isLogedIn: false,
+  loginType: "BUYER",
+  handleLogout: () => undefined,
+  setIsLogedIn: () => undefined,
+  setLoginType: () => undefined,
+});
 
-export const AuthContext = createContext({});
+export default function AuthProvider({
+  children,
+}: {
+  children: React.ReactElement;
+}) {
+  const [isLogedIn, setIsLogedIn] = useState(!!localStorage.getItem("token"));
+  const initialType = localStorage.getItem("login_type") || "BUYER";
+  const [loginType, setLoginType] = useState(initialType);
 
-export default function AuthProvider() {
-  const navigate = useNavigate();
-  const [isLogedIn, setIsLogedIn] = useState(false);
-
-  useEffect(() => {
-    setIsLogedIn(!!localStorage.getItem("token"));
-  }, [navigate]);
-
-  const handleLogout = useCallback(async () => {
+  const handleLogout = () => {
     localStorage.removeItem("token");
-    navigate("/", { replace: true });
-  }, [navigate]);
+    setIsLogedIn(false);
+  };
 
   return (
     <AuthContext.Provider
       value={{
-        handleLogout,
         isLogedIn,
+        loginType,
+        handleLogout,
+        setIsLogedIn,
+        setLoginType,
       }}
     >
-      {isLogedIn ? <Outlet /> : <LoginPage />}
+      {children}
     </AuthContext.Provider>
   );
 }

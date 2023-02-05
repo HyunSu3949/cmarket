@@ -6,16 +6,19 @@ import Router from "src/pages/Router/Router";
 import "react-toastify/dist/ReactToastify.css";
 import ModalProvider from "./components/modal/ModalProvider";
 import Modals from "src/components/modal/Modals";
+import AuthProvider from "src/lib/auth/AuthProvider/AuthProvider";
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <ModalProvider>
-        <Router />
-        <ToastContainer />
-        <Modals />
-        <ReactQueryDevtools />
-      </ModalProvider>
+      <AuthProvider>
+        <ModalProvider>
+          <Router />
+          <Modals />
+        </ModalProvider>
+      </AuthProvider>
+      <ToastContainer />
+      <ReactQueryDevtools />
     </QueryClientProvider>
   );
 }

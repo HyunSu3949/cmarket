@@ -6,8 +6,6 @@ export default function ProductList() {
   const {
     data,
     isLoading,
-    isError,
-    error,
     currentPage,
     goToNextPage,
     goToPrevPage,
@@ -15,7 +13,6 @@ export default function ProductList() {
   } = useProductList();
 
   if (isLoading) return <div>...</div>;
-  if (isError) return <div>{error.toString()}</div>;
   return (
     <>
       <S.List>

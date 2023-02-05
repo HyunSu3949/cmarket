@@ -118,3 +118,36 @@ export function orderValidate(name: string, value: string): string {
 
   return validates[name](value);
 }
+
+export function uploadValidate(name: string, value: string | number) {
+  const validates: any = {
+    product_name: (value: string) => {
+      if (!value) {
+        return "아이디를 입력하세요";
+      }
+      if (value.length > 20) {
+        return "최대 20자 까지 가능합니다.";
+      }
+      return "";
+    },
+    image: (value: string) => {
+      if (!value) {
+        return "이미지를 업로드 하세요";
+      }
+      return "";
+    },
+    price: (value: number) => {
+      return "";
+    },
+    shipping_fee: (value: number) => {
+      return "";
+    },
+    stock: (value: number) => {
+      return "";
+    },
+    products_info: (value: string) => {
+      return "";
+    },
+  };
+  return validates[name](value);
+}

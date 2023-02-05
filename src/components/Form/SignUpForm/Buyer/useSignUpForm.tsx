@@ -21,6 +21,10 @@ async function validateUsername(username: string) {
   return result;
 }
 
+async function signUp(values: signUpInfo) {
+  return axiosInstance.post("/accounts/signup/", values);
+}
+
 export default function useSignUpForm() {
   const navigate = useNavigate();
   const [msgFromServer, setMsgFromServer] = useState<check>({
@@ -49,12 +53,6 @@ export default function useSignUpForm() {
       },
     }
   );
-
-  async function signUp(values: signUpInfo) {
-    return axiosInstance.post("/accounts/signup/", {
-      ...values,
-    });
-  }
 
   const { mutate: signUpMutate } = useMutation(
     (signUpInfo: signUpInfo) => signUp(signUpInfo),
