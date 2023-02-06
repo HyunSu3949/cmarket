@@ -10,7 +10,7 @@ export default function EditProduct() {
     shipping_method: "PARCEL",
     shipping_fee: 0,
     stock: 0,
-    products_info: "",
+    product_info: "",
     token: localStorage.getItem("token"),
   };
   const validate = uploadValidate;

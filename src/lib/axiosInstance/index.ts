@@ -1,6 +1,7 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 import { toast } from "react-toastify";
 import { baseUrl } from "./constants";
+const token = localStorage.getItem("token");
 
 const axiosInstance = axios.create({
   baseURL: baseUrl,
@@ -40,3 +41,11 @@ axiosInstance.interceptors.response.use(
 );
 
 export default axiosInstance;
+
+export const axiosInstanceMultiForm = axios.create({
+  baseURL: baseUrl,
+  headers: {
+    "Content-Type": "multipart/form-data",
+    Authorization: `JWT  ${token}`,
+  },
+});

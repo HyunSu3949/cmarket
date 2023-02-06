@@ -26,6 +26,7 @@ export default function AuthProvider({
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("login_type");
     setIsLogedIn(false);
   };
 

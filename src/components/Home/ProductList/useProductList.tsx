@@ -11,23 +11,16 @@ async function fetchProduct(currentPage: number) {
 
 export default function useProductList() {
   const [currentPage, setCurrentPage] = useState(1);
-  const [maxProductPage, setMaxProductPage] = useState(5);
-  const [totalCount, setTotalCount] = useState(0);
-  const { data, isError, error, isLoading }: any = useQuery(
-    ["products", currentPage],
-    () => fetchProduct(currentPage)
+
+  const { data, isLoading } = useQuery(["products", currentPage], () =>
+    fetchProduct(currentPage)
   );
 
-  useEffect(() => {
-    if (data && !isError && !isLoading) {
-      const totalProductCount = data.data.count;
-      setTotalCount(totalProductCount);
-      const maxPage = Math.ceil(totalProductCount / 15);
-      setMaxProductPage(maxPage);
-    }
-  }, [data]);
+  const productList = data?.data.results || [];
+  const totalCount = data?.data.count || 0;
 
   useEffect(() => {
+    const maxProductPage = Math.ceil(totalCount / 15);
     if (currentPage < maxProductPage) {
       const nextPage = currentPage + 1;
 
@@ -41,7 +34,7 @@ export default function useProductList() {
     setCurrentPage(pageNumber);
   };
   return {
-    data,
+    productList,
     isLoading,
     currentPage,
     setPageNumber,

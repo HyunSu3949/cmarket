@@ -1,5 +1,5 @@
 import React from "react";
-import axiosInstance from "src/lib/axiosInstance";
+import { axiosInstanceMultiForm } from "src/lib/axiosInstance";
 import { useMutation } from "react-query";
 
 type UploadInfo = {
@@ -14,7 +14,7 @@ type UploadInfo = {
 };
 
 async function uploadProduct(uploadInfo: UploadInfo) {
-  return axiosInstance.post("/products/", uploadInfo);
+  return axiosInstanceMultiForm.post("/products/", uploadInfo);
 }
 
 export default function useUploadForm() {

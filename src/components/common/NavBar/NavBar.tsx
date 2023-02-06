@@ -17,6 +17,7 @@ export default function NavBar() {
       },
     });
   };
+
   return (
     <nav style={{ display: "flex" }}>
       <img src="" alt="메인 로고" />

@@ -1,6 +1,10 @@
 import ReactModal from "react-modal";
 
-export default function MyModal({ onClose, onLogout }: any) {
+type Props = {
+  onClose: () => void;
+  onLogout: () => void;
+};
+export default function MyModal({ onClose, onLogout }: Props) {
   const handleClose = () => {
     onClose();
   };

@@ -4,17 +4,18 @@ import Form from "src/components/Form/Form";
 import SubmitBtn from "src/components/Form/SubmitBtn";
 import SelectShippingMethod from "src/components/Form/UploadForm/SelectShippingMethod";
 import useUploadForm from "src/components/Form/UploadForm/useUploadForm";
-
+import InputFileField from "src/components/Form/UploadForm/InputFileField";
+import FormWithImg from "src/components/Form/UploadForm/FormWithImg";
 export default function UploadForm() {
   const { onSubmit } = useUploadForm();
 
   return (
-    <Form onSubmit={onSubmit}>
+    <FormWithImg onSubmit={onSubmit}>
       상품명
       <InputField name={"product_name"} type={"text"} />
       <ValidationMessage name={"product_name"} />
       이미지
-      <InputField name={"image"} type={"text"} />
+      <InputFileField name={"image"} />
       <ValidationMessage name={"image"} />
       판매가
       <InputField name={"price"} type={"text"} />
@@ -28,9 +29,9 @@ export default function UploadForm() {
       <InputField name={"stock"} type={"text"} />
       <ValidationMessage name={"stock"} />
       상품 정보
-      <InputField name={"products_info"} type={"text"} />
-      <ValidationMessage name={"products_info"} />
+      <InputField name={"product_info"} type={"text"} />
+      <ValidationMessage name={"product_info"} />
       <SubmitBtn BtnText="상품 등록" />
-    </Form>
+    </FormWithImg>
   );
 }
