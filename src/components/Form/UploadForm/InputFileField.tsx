@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { FormContext } from "src/components/Form/FormProvider";
 import emptyImg from "src/assets/images/product_empty_img.png";
-
 export default function InputFileField(props: any) {
   const { inputFieldProps, setValues }: any = useContext(FormContext);
   const { onBlur } = inputFieldProps(props.name);

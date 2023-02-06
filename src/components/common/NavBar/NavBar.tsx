@@ -5,6 +5,7 @@ import useModals from "src/components/modal/hooks/useModals";
 import { useContext } from "react";
 import { AuthContext } from "src/lib/auth/AuthProvider/AuthProvider";
 import { modals } from "src/components/modal/Modals";
+import * as S from "./NavbarStyle";
 
 export default function NavBar() {
   const { isLogedIn, loginType, handleLogout } = useContext(AuthContext);
@@ -19,19 +20,22 @@ export default function NavBar() {
   };
 
   return (
-    <nav style={{ display: "flex" }}>
-      <img src="" alt="메인 로고" />
+    <S.Nav style={{ display: "flex" }}>
+      <S.LogoImg src="" alt="메인 로고" />
       <SearchBar />
       {isLogedIn ? (
         <>
           <button onClick={openMyModal}>마이페이지</button>
           {loginType === "BUYER" ? (
-            <Link to="/cart">
-              <img src="" alt="장바구니 아이콘" />
+            <S.StyledLink to="/cart" id="cart">
+              <S.CartIcon />
               장바구니
-            </Link>
+            </S.StyledLink>
           ) : (
-            <Link to={"/sellerpage"}>판매자 센터</Link>
+            <S.StyledLink to="/sellerpage" id="seller">
+              <S.BagIcon />
+              판매자 센터
+            </S.StyledLink>
           )}
         </>
       ) : (
@@ -40,6 +44,6 @@ export default function NavBar() {
           로그인
         </Link>
       )}
-    </nav>
+    </S.Nav>
   );
 }
