@@ -5,7 +5,7 @@ type props = {
   product_id: number;
   product_name: string;
   seller: number;
-  seller_store: string;
+  store_name: string;
   image: string;
   price: number;
   shipping_method: string;
@@ -13,9 +13,10 @@ type props = {
   stock: number;
   products_info: string;
 };
+
 export default function Product({
   product_id,
-  seller_store,
+  store_name,
   product_name,
   image,
   price,
@@ -27,9 +28,12 @@ export default function Product({
   return (
     <S.Wrapper onClick={handleClick}>
       <S.Img src={image} alt="상품이미지" />
+      <S.StoreName>{store_name}</S.StoreName>
       <S.ProductName>{product_name}</S.ProductName>
-      <S.ProductName>{seller_store}</S.ProductName>
-      <S.ProductName>{price}</S.ProductName>
+      <S.ProductPrice>
+        {price.toLocaleString("ko-KR")}
+        <span>원</span>
+      </S.ProductPrice>
     </S.Wrapper>
   );
 }

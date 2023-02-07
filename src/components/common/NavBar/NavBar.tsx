@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import SearchBar from "src/components/Search/SearchBar";
 import useModals from "src/components/modal/hooks/useModals";
 import { useContext } from "react";
@@ -21,29 +20,38 @@ export default function NavBar() {
 
   return (
     <S.Nav style={{ display: "flex" }}>
-      <S.LogoImg src="" alt="메인 로고" />
-      <SearchBar />
-      {isLogedIn ? (
-        <>
-          <button onClick={openMyModal}>마이페이지</button>
-          {loginType === "BUYER" ? (
-            <S.StyledLink to="/cart" id="cart">
-              <S.CartIcon />
-              장바구니
-            </S.StyledLink>
+      <div className="wrapper">
+        <div>
+          <S.LogoImg src="" alt="메인 로고" />
+          <SearchBar />
+        </div>
+        <div>
+          {isLogedIn ? (
+            <>
+              <S.MyPageBtn onClick={openMyModal}>
+                <S.HumanIcon />
+                마이페이지
+              </S.MyPageBtn>
+              {loginType === "BUYER" ? (
+                <S.StyledLink to="/cart" id="cart">
+                  <S.CartIcon />
+                  장바구니
+                </S.StyledLink>
+              ) : (
+                <S.StyledLink to="/sellerpage" id="seller">
+                  <S.BagIcon />
+                  판매자 센터
+                </S.StyledLink>
+              )}
+            </>
           ) : (
-            <S.StyledLink to="/sellerpage" id="seller">
-              <S.BagIcon />
-              판매자 센터
+            <S.StyledLink to="/login" id="login">
+              <S.HumanIcon />
+              로그인
             </S.StyledLink>
           )}
-        </>
-      ) : (
-        <Link to="/login">
-          <img src="" alt="로그인 아이콘" />
-          로그인
-        </Link>
-      )}
+        </div>
+      </div>
     </S.Nav>
   );
 }

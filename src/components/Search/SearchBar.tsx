@@ -1,12 +1,15 @@
 import React from "react";
 import useSearch from "./useSearch";
+import * as S from "./SearchBarStyle";
 
 export default function SearchBar() {
   const { onChange } = useSearch();
   return (
-    <form>
-      <input type="text" onChange={onChange} />
-      <button>검색</button>
-    </form>
+    <S.Form>
+      <S.Input type="text" onChange={onChange} />
+      <S.Button>
+        <span className="ir">검색</span>
+      </S.Button>
+    </S.Form>
   );
 }

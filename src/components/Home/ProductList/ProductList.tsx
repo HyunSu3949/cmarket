@@ -8,20 +8,23 @@ export default function ProductList() {
     useProductList();
   return (
     <>
-      <S.List>
+      <S.ItemGrid>
         {productList.map((item: any) => (
           <Product key={item.product_id} {...item} />
         ))}
-      </S.List>
-      <Pagination
-        activePage={currentPage} // 현재 페이지
-        totalItemsCount={totalCount}
-        itemsCountPerPage={15} // 총 아이템 갯수
-        pageRangeDisplayed={5} // paginator의 페이지 범위
-        prevPageText={"‹-"} // "이전"을 나타낼 텍스트
-        nextPageText={"-›"} // "다음"을 나타낼 텍스트
-        onChange={(pageNumber) => setPageNumber(pageNumber)} // 페이지 변경을 핸들링하는 함수
-      />
+      </S.ItemGrid>
+
+      <S.PaginationWrapper>
+        <Pagination
+          activePage={currentPage} // 현재 페이지
+          totalItemsCount={totalCount}
+          itemsCountPerPage={15} // 총 아이템 갯수
+          pageRangeDisplayed={5} // paginator의 페이지 범위
+          prevPageText={"‹"} // "이전"을 나타낼 텍스트
+          nextPageText={"›"} // "다음"을 나타낼 텍스트
+          onChange={(pageNumber) => setPageNumber(pageNumber)} // 페이지 변경을 핸들링하는 함수
+        />
+      </S.PaginationWrapper>
     </>
   );
 }

@@ -32,6 +32,7 @@ export default function useProductList() {
 
   const setPageNumber = (pageNumber: number) => {
     setCurrentPage(pageNumber);
+    window.scrollTo(0, 0);
   };
   return {
     productList,

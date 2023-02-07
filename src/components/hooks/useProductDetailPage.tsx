@@ -14,7 +14,7 @@ type Props = {
 export default function useProductDetailPage({ product_id }: Props) {
   const [quantity, setQuantity] = useState(1);
 
-  const { data, isLoading } = useQuery(
+  const { data } = useQuery(
     ["product", product_id],
     () => fetchProduct(product_id),
     {
@@ -22,9 +22,9 @@ export default function useProductDetailPage({ product_id }: Props) {
     }
   );
 
+  const productData = !!data && data.data;
   return {
-    data,
-    isLoading,
+    productData,
     quantity,
     setQuantity,
   };

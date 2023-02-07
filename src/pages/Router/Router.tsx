@@ -3,7 +3,7 @@ import HomePage from "src/pages/Home/HomePage";
 import LoginPage from "src/pages/Login/LoginPage";
 import SignUpPage from "src/pages/SignUp/SignUpPage";
 import CartPage from "src/pages/Cart/CartPage";
-import ProductDetailPage from "src/pages/Product/ProductDetailPage";
+import ProductDetailPage from "src/pages/ProductDetail/ProductDetailPage";
 import PaymentPage from "src/pages/Payment/PaymentPage";
 import { useContext } from "react";
 import { AuthContext } from "src/lib/auth/AuthProvider/AuthProvider";

@@ -1,4 +1,3 @@
-import useCart from "src/components/Cart/useCart";
 import useProductDetail from "src/components/hooks/useProductDetailPage";
 type Props = {
   product_id: number;
@@ -6,8 +5,8 @@ type Props = {
 };
 
 export default function DirectOrderProduct({ product_id, quantity }: Props) {
-  const { data } = useProductDetail({ product_id });
-  const { image, price, store_name, product_name, shipping_fee } = data?.data;
+  const { productData } = useProductDetail({ product_id });
+  const { image, price, store_name, product_name, shipping_fee } = productData;
   const totalPrice = price * quantity + shipping_fee;
 
   return (
