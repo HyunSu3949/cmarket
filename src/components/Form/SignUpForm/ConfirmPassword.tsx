@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
-import { FormContext } from "src/components/Form/FormProvider";
-import ValidationMessage from "src/components/Form/ValidationMessage";
+import { FormContext } from "src/components/Form/FormCommon/FormProvider";
+import ValidationMessage from "src/components/Form/FormCommon/ValidationMessage";
 
 export default function ConfirmPassword() {
   const { values, setErrors, touched, errors }: any = useContext(FormContext);
@@ -9,7 +9,7 @@ export default function ConfirmPassword() {
 
   useEffect(() => {
     if (password !== password2) {
-      setErrors({ ...errors, password2: "불일치" });
+      setErrors({ ...errors, password2: "비밀번호가 일치하지 않습니다." });
     }
   }, [touched]);
 

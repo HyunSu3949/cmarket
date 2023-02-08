@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { FormContext } from "src/components/Form/FormProvider";
+import { FormContext } from "src/components/Form/FormCommon/FormProvider";
 
 export default function SelectPaymentType() {
   const [selectedOption, setSelectedOption] = useState("CARD");

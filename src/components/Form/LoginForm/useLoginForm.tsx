@@ -3,6 +3,7 @@ import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
 import axiosInstance from "src/lib/axiosInstance";
 import { AuthContext } from "src/lib/auth/AuthProvider/AuthProvider";
+import { FormContext } from "src/components/Form/FormCommon/FormProvider";
 
 type UserInfo = {
   username: string;
@@ -30,8 +31,17 @@ export default function useLoginForm() {
         navigate("/", { replace: true });
       },
       onError: (error: any) => {
-        if (error.response.data.FAIL_Message) {
-          setMsgFromServer(error.response.data.FAIL_Message);
+        if (error.response.data.FAIL_Message === "로그인 정보가 없습니다.") {
+          setMsgFromServer("아이디 또는 비밀번호를 확인하세요");
+
+          return;
+        }
+        if (
+          error.response.data.FAIL_Message ===
+          "로그인 정보가 없습니다. 로그인 유형을 학인해주세요."
+        ) {
+          setMsgFromServer("로그인 유형을 확인하세요");
+
           return;
         }
       },
@@ -42,5 +52,5 @@ export default function useLoginForm() {
     loginMutate({ ...values, login_type: loginType });
   };
 
-  return { msgFromServer, onSubmit, setLoginType };
+  return { msgFromServer, onSubmit, loginType, setLoginType };
 }

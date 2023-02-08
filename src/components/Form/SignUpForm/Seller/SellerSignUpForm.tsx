@@ -1,12 +1,12 @@
-import InputField from "src/components/Form/InputField";
-import ValidationMessage from "src/components/Form/ValidationMessage";
-import Form from "src/components/Form/Form";
+import InputField from "src/components/Form/FormCommon/InputField";
+import ValidationMessage from "src/components/Form/FormCommon/ValidationMessage";
+import Form from "src/components/Form/FormCommon/Form";
 import MsgFromServer from "../MsgFromServer";
 import useSellerSignUpForm from "src/components/Form/SignUpForm/Seller/useSellerSignUpForm";
-import SubmitBtn from "src/components/Form/SubmitBtn";
+import SubmitBtn from "src/components/Form/FormCommon/SubmitBtn";
 import ConfirmPassword from "src/components/Form/SignUpForm/ConfirmPassword";
 import { useContext } from "react";
-import { FormContext } from "src/components/Form/FormProvider";
+import { FormContext } from "src/components/Form/FormCommon/FormProvider";
 import * as S from "./SellerSignUpFormStyle";
 
 export default function SellerSignUpForm() {
@@ -14,7 +14,7 @@ export default function SellerSignUpForm() {
     onSubmit,
     validateUsernameMutate,
     validateRegistNumberMutate,
-    msgFromServer: message,
+    msgFromServer,
   } = useSellerSignUpForm();
 
   const { errors, values }: any = useContext(FormContext);
@@ -37,55 +37,84 @@ export default function SellerSignUpForm() {
   const disabled_regi = registNumberError !== "";
 
   return (
-    <Form onSubmit={onSubmit}>
-      아이디
+    <Form onSubmit={onSubmit} className={"signup_seller"}>
+      <S.Span>아이디</S.Span>
       <S.FormBlock>
-        <InputField name={"username"} type={"text"} />
+        <S.UsernameContainer>
+          <InputField
+            name={"username"}
+            type={"text"}
+            className={"signup_seller username"}
+          />
+          <S.CheckBtn
+            type={"button"}
+            onClick={usernameCheck}
+            disabled={disabled_user}
+          >
+            <S.Span>중복확인</S.Span>
+          </S.CheckBtn>
+        </S.UsernameContainer>
         <ValidationMessage name={"username"} />
-        <MsgFromServer type={"username"} message={message["username"]} />
-        <button
-          type={"button"}
-          onClick={usernameCheck}
-          disabled={disabled_user}
-        >
-          중복
-        </button>
-        비밀번호
-        <InputField name={"password"} type={"password"} />
-        <ValidationMessage name={"password"} />
-        <MsgFromServer type={"password"} message={message["password"]} />
-        비밀번호 재확인
-        <InputField name={"password2"} type={"password"} />
-        <ConfirmPassword />
-        이름
-        <InputField name={"name"} type={"text"} />
-        <ValidationMessage name={"name"} />
-        휴대폰번호
-        <InputField name={"phone_number"} type={"text"} />
-        <ValidationMessage name={"phone_number"} />
-        <MsgFromServer
-          type={"phone_number"}
-          message={message["phone_number"]}
+        <MsgFromServer type={"username"} msgFromServer={msgFromServer} />
+        <S.Span>비밀번호</S.Span>
+        <InputField
+          name={"password"}
+          type={"password"}
+          className={"signup_seller password"}
         />
-        사업자 등록번호
-        <InputField name={"company_registration_number"} type={"text"} />
+        <ValidationMessage name={"password"} />
+        <MsgFromServer type={"password"} msgFromServer={msgFromServer} />
+        <S.Span>비밀번호 재확인</S.Span>
+        <InputField
+          name={"password2"}
+          type={"password"}
+          className={"signup_seller password"}
+        />
+        <ConfirmPassword />
+        <S.Span>이름</S.Span>
+        <InputField
+          name={"name"}
+          type={"text"}
+          className={"signup_seller name"}
+        />
+        <ValidationMessage name={"name"} />
+        <S.Span>휴대폰번호</S.Span>
+        <InputField
+          name={"phone_number"}
+          type={"text"}
+          className={"signup_seller phone_number"}
+        />
+        <ValidationMessage name={"phone_number"} />
+        <MsgFromServer type={"phone_number"} msgFromServer={msgFromServer} />
+        <S.Span>사업자 등록번호</S.Span>
+        <S.C_NumberContainer>
+          <InputField
+            name={"company_registration_number"}
+            type={"text"}
+            className={"signup_seller company_registration_number"}
+          />
+          <S.CheckBtn
+            type={"button"}
+            onClick={registNumberCheck}
+            disabled={disabled_regi}
+          >
+            인증
+          </S.CheckBtn>
+        </S.C_NumberContainer>
         <ValidationMessage name={"company_registration_number"} />
         <MsgFromServer
           type={"company_registration_number"}
-          message={message["company_registration_number"]}
+          msgFromServer={msgFromServer}
         />
-        <button
-          type={"button"}
-          onClick={registNumberCheck}
-          disabled={disabled_regi}
-        >
-          중복
-        </button>
-        스토어 이름
-        <InputField name={"store_name"} type={"text"} />
+        <S.Span>스토어 이름</S.Span>
+        <InputField
+          name={"store_name"}
+          type={"text"}
+          className={"signup_seller store_name"}
+        />
         <ValidationMessage name={"store_name"} />
-        <MsgFromServer type={"store_name"} message={message["store_name"]} />
-        <SubmitBtn BtnText="회원가입" />
+        <MsgFromServer type={"store_name"} msgFromServer={msgFromServer} />
+        <SubmitBtn BtnText="회원가입" className={"signup_buyer"} />
       </S.FormBlock>
     </Form>
   );

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import FormProvider from "src/components/Form/FormProvider";
+import FormProvider from "src/components/Form/FormCommon/FormProvider";
 import OrderForm from "src/components/Form/OrderForm/OrderForm";
 import { orderValidate } from "./../../components/Form/utils/formValidation";
 import OrderProductList from "./../../components/Payment/OrderProductList/OrderProductList";

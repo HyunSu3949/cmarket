@@ -1,23 +1,32 @@
 import { useContext, useState, useEffect } from "react";
-import { FormContext } from "../FormProvider";
+import { FormContext } from "../FormCommon/FormProvider";
+import * as S from "./MsgFromServer.style";
+import Loading from "src/components/common/Loading/Loading";
 
 type Props = {
   type: string;
-  message: string;
+  msgFromServer: {
+    [key: string]: { status: boolean; message: string };
+  };
 };
 
-export default function MsgFromServer({ type, message }: Props) {
-  const { errors, values }: any = useContext(FormContext);
+export default function MsgFromServer({ type, msgFromServer }: Props) {
+  const { errors }: any = useContext(FormContext);
   const validateError = errors[type];
   const [checkMsg, setCheckMsg] = useState("");
 
   useEffect(() => {
-    setCheckMsg("");
-  }, [values]);
+    setCheckMsg(msgFromServer[type].message);
+  }, [msgFromServer]);
 
-  useEffect(() => {
-    setCheckMsg(message);
-  }, [message]);
-
-  return <>{validateError === "" && <span>{checkMsg}</span>}</>;
+  return (
+    <>
+      <Loading />
+      {validateError === "" && (
+        <S.ServerMsg passed={msgFromServer[type].status}>
+          {checkMsg}
+        </S.ServerMsg>
+      )}
+    </>
+  );
 }

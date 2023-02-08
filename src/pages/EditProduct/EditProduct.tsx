@@ -1,4 +1,4 @@
-import FormProvider from "src/components/Form/FormProvider";
+import FormProvider from "src/components/Form/FormCommon/FormProvider";
 import UploadForm from "src/components/Form/UploadForm/UploadForm";
 import { uploadValidate } from "src/components/Form/utils/formValidation";
 

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { FormContext } from "src/components/Form/FormProvider";
+import { FormContext } from "src/components/Form/FormCommon/FormProvider";
 
 export default function SelectShippingMethod() {
   const { values, setValues }: any = useContext(FormContext);

@@ -1,8 +1,11 @@
-import SignUpForm from "src/components/Form/SignUpForm/Buyer/SignUpForm";
 import { useState } from "react";
+import SignUpForm from "src/components/Form/SignUpForm/Buyer/SignUpForm";
 import { signUpValidate } from "./../../components/Form/utils/formValidation";
-import FormProvider from "src/components/Form/FormProvider";
+import FormProvider from "src/components/Form/FormCommon/FormProvider";
 import SellerSignUpForm from "src/components/Form/SignUpForm/Seller/SellerSignUpForm";
+import * as S from "./SignUpPage.style";
+import logo from "src/assets/images/Logo-hodu.png";
+import { Link } from "react-router-dom";
 
 export default function SignUpPage() {
   const [type, setType] = useState("BUYER");
@@ -26,24 +29,42 @@ export default function SignUpPage() {
   const validate = signUpValidate;
 
   return (
-    <div>
-      <div>
-        <button onClick={() => setType("BUYER")} type="button">
-          구매회원가입
-        </button>
-        <button onClick={() => setType("SELLER")} type="button">
-          판매회원가입
-        </button>
-      </div>
-      {type === "BUYER" ? (
-        <FormProvider initialValues={initialValues_buyer} validate={validate}>
-          <SignUpForm />
-        </FormProvider>
-      ) : (
-        <FormProvider initialValues={initialValues_seller} validate={validate}>
-          <SellerSignUpForm />
-        </FormProvider>
-      )}
-    </div>
+    <S.Wrapper>
+      <Link to={"/"}>
+        <S.Img src={logo} alt="로고 이미지" />
+      </Link>
+      <S.FormWrapper>
+        <S.BtnWrapper>
+          <S.Button
+            onClick={() => setType("BUYER")}
+            type="button"
+            id={"BUYER"}
+            name={type}
+          >
+            구매회원가입
+          </S.Button>
+          <S.Button
+            onClick={() => setType("SELLER")}
+            type="button"
+            id={"SELLER"}
+            name={type}
+          >
+            판매회원가입
+          </S.Button>
+        </S.BtnWrapper>
+        {type === "BUYER" ? (
+          <FormProvider initialValues={initialValues_buyer} validate={validate}>
+            <SignUpForm />
+          </FormProvider>
+        ) : (
+          <FormProvider
+            initialValues={initialValues_seller}
+            validate={validate}
+          >
+            <SellerSignUpForm />
+          </FormProvider>
+        )}
+      </S.FormWrapper>
+    </S.Wrapper>
   );
 }

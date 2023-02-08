@@ -11,9 +11,7 @@ type signUpInfo = {
   name: string;
   phone_number: string;
 };
-type check = {
-  [key: string]: string;
-};
+
 async function validateUsername(username: string) {
   const result = await axiosInstance.post("/accounts/signup/valid/username/", {
     username: username,
@@ -37,11 +35,12 @@ async function signUp(values: signUpInfo) {
 
 export default function useSignUpForm() {
   const navigate = useNavigate();
-  const [msgFromServer, setMsgFromServer] = useState<check>({
-    username: "",
-    password: "",
-    phone__number: "",
-    company_registration_number: "",
+  const [msgFromServer, setMsgFromServer] = useState({
+    username: { status: false, message: "" },
+    password: { status: false, message: "" },
+    phone_number: { status: false, message: "" },
+    company_registration_number: { status: false, message: "" },
+    store_name: { status: false, message: "" },
   });
 
   const { mutate: validateUsernameMutate } = useMutation(
@@ -52,7 +51,7 @@ export default function useSignUpForm() {
 
         setMsgFromServer((prev) => ({
           ...prev,
-          username: message,
+          username: { status: true, message: message },
         }));
       },
       onError: (error: any) => {
@@ -61,7 +60,7 @@ export default function useSignUpForm() {
         if (errors.FAIL_Message) {
           setMsgFromServer((prev) => ({
             ...prev,
-            username: errors.FAIL_Message,
+            username: { status: false, message: errors.FAIL_Message },
           }));
         }
       },
@@ -75,7 +74,7 @@ export default function useSignUpForm() {
 
         setMsgFromServer((prev) => ({
           ...prev,
-          company_registration_number: message,
+          company_registration_number: { status: true, message: message },
         }));
       },
       onError: (error: any) => {
@@ -84,7 +83,10 @@ export default function useSignUpForm() {
         if (errors.FAIL_Message) {
           setMsgFromServer((prev) => ({
             ...prev,
-            company_registration_number: errors.FAIL_Message,
+            company_registration_number: {
+              status: false,
+              message: errors.FAIL_Message,
+            },
           }));
         }
       },
@@ -103,19 +105,19 @@ export default function useSignUpForm() {
         if (errors.phone_number) {
           setMsgFromServer((prev) => ({
             ...prev,
-            phone_number: errors.phone_number[0],
+            phone_number: { status: false, message: errors.phone_number[0] },
           }));
         }
         if (errors.password) {
           setMsgFromServer((prev) => ({
             ...prev,
-            password: errors.password[0],
+            password: { status: false, message: errors.password[0] },
           }));
         }
         if (errors.store_name) {
           setMsgFromServer((prev) => ({
             ...prev,
-            store_name: errors.store_name[0],
+            store_name: { status: false, message: errors.store_name[0] },
           }));
         }
         toast.error("잘못된 접근");
@@ -124,12 +126,12 @@ export default function useSignUpForm() {
   );
 
   const onSubmit = async (values: signUpInfo) => {
-    if (msgFromServer.username !== "멋진 아이디네요 :)") {
+    if (msgFromServer.username.message !== "멋진 아이디네요 :)") {
       toast("아이디 중복검사를 해주세요");
       return;
     }
     if (
-      msgFromServer.company_registration_number !==
+      msgFromServer.company_registration_number.message !==
       "사용 가능한 사업자등록번호입니다."
     ) {
       toast("사업자등록번호 중복검사를 해주세요");

@@ -47,28 +47,33 @@ const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
 
-  .ir {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-  }
+.ir {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
 
-  body {
-    font-family: 'Spoqa Han Sans Neo';
-    font-style: normal;
-    font-weight: normal; /* 100 = 얇게, normal = 보통, 500 = 두껍게 */
-  }
-  
-  a {
+body {
+  font-family: 'Spoqa Han Sans Neo';
+  font-style: normal;
+  font-weight: normal; /* 100 = 얇게, normal = 보통, 500 = 두껍게 */
+}
+
+a {
   color: inherit;
   text-decoration: none;
 }
 
 button {
   all: unset;
+}
+
+input {
+  outline: none;
+  
 }
 
 `;

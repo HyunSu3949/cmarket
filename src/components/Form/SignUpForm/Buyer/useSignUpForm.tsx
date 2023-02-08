@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
 import axiosInstance from "src/lib/axiosInstance";
@@ -11,9 +11,7 @@ type signUpInfo = {
   name: string;
   phone_number: string;
 };
-type check = {
-  [key: string]: string;
-};
+
 async function validateUsername(username: string) {
   const result = await axiosInstance.post("/accounts/signup/valid/username/", {
     username: username,
@@ -27,10 +25,11 @@ async function signUp(values: signUpInfo) {
 
 export default function useSignUpForm() {
   const navigate = useNavigate();
-  const [msgFromServer, setMsgFromServer] = useState<check>({
-    username: "",
-    password: "",
-    phone__number: "",
+
+  const [msgFromServer, setMsgFromServer] = useState({
+    username: { status: false, message: "" },
+    password: { status: false, message: "" },
+    phone_number: { status: false, message: "" },
   });
 
   const { mutate: validateUsernameMutate } = useMutation(
@@ -39,7 +38,10 @@ export default function useSignUpForm() {
       onSuccess: (data) => {
         const message = data.data.Success;
 
-        setMsgFromServer({ username: message });
+        setMsgFromServer((prev) => ({
+          ...prev,
+          username: { status: true, message: message },
+        }));
       },
       onError: (error: any) => {
         const errors = error.response.data;
@@ -47,7 +49,10 @@ export default function useSignUpForm() {
         if (errors.FAIL_Message) {
           setMsgFromServer((prev) => ({
             ...prev,
-            username: errors.FAIL_Message,
+            username: {
+              status: false,
+              message: errors.FAIL_Message,
+            },
           }));
         }
       },
@@ -57,22 +62,28 @@ export default function useSignUpForm() {
   const { mutate: signUpMutate } = useMutation(
     (signUpInfo: signUpInfo) => signUp(signUpInfo),
     {
-      onSuccess: (data) => {
+      onSuccess: () => {
         toast("회원가입 완료! 로그인해서 시작해보세요!");
         navigate("/login", { replace: true });
       },
       onError: (error: any) => {
-        const errors = { ...error.response.data };
+        const errors = error.response.data;
         if (errors.phone_number) {
           setMsgFromServer((prev) => ({
             ...prev,
-            phone_number: errors.phone_number[0],
+            phone_number: {
+              status: false,
+              message: errors.phone_number[0],
+            },
           }));
         }
         if (errors.password) {
           setMsgFromServer((prev) => ({
             ...prev,
-            password: errors.password[0],
+            password: {
+              status: false,
+              message: errors.password[0],
+            },
           }));
         }
         toast.error("잘못된 접근");
@@ -81,7 +92,7 @@ export default function useSignUpForm() {
   );
 
   const onSubmit = async (values: signUpInfo) => {
-    if (msgFromServer.username !== "멋진 아이디네요 :)") {
+    if (msgFromServer.username.message !== "멋진 아이디네요 :)") {
       toast("아이디 중복검사를 해주세요");
       return;
     }

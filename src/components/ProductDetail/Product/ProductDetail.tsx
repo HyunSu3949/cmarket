@@ -10,10 +10,11 @@ export default function ProductDetail({
   product_id: string | undefined;
 }) {
   const id = !!product_id ? +product_id : 0;
-  const order_kind = "direct_order";
+
   const { productData, quantity, setQuantity } = useProductDetail({
     product_id: id,
   });
+
   const {
     image,
     price,
@@ -24,7 +25,8 @@ export default function ProductDetail({
   } = productData;
 
   const fee = shipping_fee ? `${shipping_fee} 원` : "무료배송";
-  const method = delivery_method === "PARCEL" ? "택배배송" : "소포";
+  const method = delivery_method === "PARCEL" ? "택배배송" : "택배배송";
+  const order_kind = "direct_order";
   const url = "/payment",
     state = {
       ...productData,
@@ -38,16 +40,18 @@ export default function ProductDetail({
         <S.Img src={image} alt="상품 이미지" />
       </div>
       <div>
-        <S.StoreName>{store_name}</S.StoreName>
-        <S.ProductName>{product_name}</S.ProductName>
-        <S.ProductPrice>
-          {price.toLocaleString("ko-KR")}
-          <span>원</span>
-        </S.ProductPrice>
+        <S.ProductInfoContainer>
+          <S.StoreName>{store_name}</S.StoreName>
+          <S.ProductName>{product_name}</S.ProductName>
+          <S.ProductPrice>
+            {Number(price).toLocaleString("ko-KR")}
+            <span>원</span>
+          </S.ProductPrice>
+        </S.ProductInfoContainer>
         <S.Method_Fee>
           {method} / {fee}
         </S.Method_Fee>
-        <S.BtnWrapper>
+        <S.QuantityBtn>
           <button
             onClick={() => setQuantity((prev) => prev - 1)}
             disabled={quantity <= 1}
@@ -58,25 +62,27 @@ export default function ProductDetail({
           <button onClick={() => setQuantity((prev) => prev + 1)}>
             <S.PlusIcon />
           </button>
-        </S.BtnWrapper>
-        <div>
-          <span>총 상품금액</span>
-          <span>
-            총 수량 <span>{quantity}</span>개
-          </span>
-          <S.ProductPrice>
-            {(quantity * price).toLocaleString("ko-KR")}
-            <span>원</span>
-          </S.ProductPrice>
-        </div>
-        <div>
+        </S.QuantityBtn>
+        <S.PriceContainer>
+          <span className="totalword">총 상품금액</span>
+          <div>
+            <span className="totalprice">
+              총 수량 <span>{quantity}</span>개
+            </span>
+            <S.ProductPrice>
+              {Number(quantity * price).toLocaleString("ko-KR")}
+              <span>원</span>
+            </S.ProductPrice>
+          </div>
+        </S.PriceContainer>
+        <S.BtnContainer>
           <Link to={url} state={state}>
             바로구매
           </Link>
           <AddCartButton product_id={id} quantity={quantity}>
             장바구니
           </AddCartButton>
-        </div>
+        </S.BtnContainer>
       </div>
     </S.Wrapper>
   );

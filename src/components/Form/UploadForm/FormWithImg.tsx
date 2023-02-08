@@ -1,5 +1,5 @@
 import { useContext, ReactNode } from "react";
-import { FormContext } from "src/components/Form/FormProvider";
+import { FormContext } from "src/components/Form/FormCommon/FormProvider";
 
 type FormProps = {
   onSubmit: (values: any) => Promise<void>;

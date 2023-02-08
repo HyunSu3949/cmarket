@@ -23,7 +23,7 @@ export default function Product({
 }: props) {
   const navigate = useNavigate();
   const handleClick = () => {
-    navigate(`product/${product_id}`);
+    navigate(`/productdetail/${product_id}`);
   };
   return (
     <S.Wrapper onClick={handleClick}>

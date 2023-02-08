@@ -1,7 +1,7 @@
 import React from "react";
-import InputField from "src/components/Form/InputField";
-import ValidationMessage from "src/components/Form/ValidationMessage";
-import Form from "src/components/Form/Form";
+import InputField from "src/components/Form/FormCommon/InputField";
+import ValidationMessage from "src/components/Form//FormCommon/ValidationMessage";
+import Form from "src/components/Form/FormCommon/Form";
 import useOrderForm from "./useOrderForm";
 import SelectPaymentType from "src/components/Form/OrderForm/SelectPaymentType";
 import SubmitConfrim from "src/components/Form/OrderForm/SubmitConfrim";
@@ -9,7 +9,7 @@ import SubmitConfrim from "src/components/Form/OrderForm/SubmitConfrim";
 export default function OrderForm(props: any) {
   const { onSubmit } = useOrderForm(props);
   return (
-    <Form onSubmit={onSubmit}>
+    <Form onSubmit={onSubmit} className={"orderForm"}>
       <p>배송지 정보</p>
       수령인
       <InputField name={"receiver"} type={"text"} />

@@ -99,6 +99,7 @@ export const MyPageBtn = styled.button`
   white-space: nowrap;
   margin-right: 16px;
   color: #767676;
+  cursor: pointer;
 `;
 
 export const BtnWrapper = styled.div`

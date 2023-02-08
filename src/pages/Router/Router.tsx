@@ -23,7 +23,7 @@ export default function Router() {
               <Route path="/payment" element={<PaymentPage />} />
               <Route path="/" element={<HomePage />} />
               <Route
-                path="/product/:product_id"
+                path="/productdetail/:product_id"
                 element={<ProductDetailPage />}
               />
             </Route>
