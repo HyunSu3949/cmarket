@@ -27,11 +27,14 @@ export default function ProductDetail({
   const fee = shipping_fee ? `${shipping_fee} 원` : "무료배송";
   const method = delivery_method === "PARCEL" ? "택배배송" : "택배배송";
   const order_kind = "direct_order";
+  const total_price = quantity * price + shipping_fee;
   const url = "/payment",
     state = {
       ...productData,
       order_kind,
       quantity,
+      total_price,
+      shipping_fee,
     };
 
   return (

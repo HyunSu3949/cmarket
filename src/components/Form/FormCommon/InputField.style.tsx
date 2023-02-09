@@ -64,23 +64,52 @@ const InputSignupSeller = css`
   ${(props: Props) =>
     props.className?.includes("signup_seller username") &&
     `
-    width: 346px;
-    margin-right:12px;
-    margin-bottom: 6px
+      width: 346px;
+      margin-right:12px;
+      margin-bottom: 6px
     `}
 
 ${(props: Props) =>
     props.className?.includes("signup_seller password") &&
     `
-    margin-bottom: 6px
+      margin-bottom: 6px
   `}
    ${(props: Props) =>
     props.className?.includes("signup_seller company_registration_number") &&
     `
-    width: 346px;
-    margin-right:12px;
-    margin-bottom: 6px
+      width: 346px;
+      margin-right:12px;
+      margin-bottom: 6px
     `}
+`;
+
+const InputOrder = css`
+  ${(props: Props) =>
+    props.className?.includes("orderForm") &&
+    `
+      width: 334px;
+      height: 40px;
+      border: 1px solid #C4C4C4;
+`}
+  ${(props: Props) =>
+    props.className?.includes("orderForm username") &&
+    `
+      width: 346px;
+      margin-right:12px;
+    `}
+
+${(props: Props) =>
+    props.className?.includes("orderForm password") &&
+    `
+  `}
+${(props: Props) =>
+    props.className?.includes("orderForm password") &&
+    `
+  `}
+${(props: Props) =>
+    props.className?.includes("orderForm password") &&
+    `
+  `}
 `;
 
 export const Input = styled.input`
@@ -89,4 +118,6 @@ export const Input = styled.input`
   ${InputSignup};
 
   ${InputSignupSeller};
+
+  ${InputOrder}
 `;

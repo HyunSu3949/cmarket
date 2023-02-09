@@ -4,7 +4,8 @@ import useModals from "src/components/modal/hooks/useModals";
 import { useContext } from "react";
 import { AuthContext } from "src/lib/auth/AuthProvider/AuthProvider";
 import { modals } from "src/components/modal/Modals";
-import * as S from "./NavbarStyle";
+import * as S from "./Navbar.style";
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   const { isLogedIn, loginType, handleLogout } = useContext(AuthContext);
@@ -22,7 +23,9 @@ export default function NavBar() {
     <S.Nav style={{ display: "flex" }}>
       <div className="wrapper">
         <div>
-          <S.LogoImg src="" alt="메인 로고" />
+          <Link to={"/"}>
+            <S.LogoImg src="" alt="메인 로고" />
+          </Link>
           <SearchBar />
         </div>
         <div>

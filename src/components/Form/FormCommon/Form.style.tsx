@@ -47,6 +47,19 @@ const signupSellerForm = css`
       color: #767676;
   `}
 `;
+
+const orderForm = css`
+  ${(props: Props) =>
+    props.className === "orderForm" &&
+    ` 
+      border:none;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      
+  `}
+`;
 export const Form = styled.form`
   position: relative;
   background-color: white;
@@ -56,4 +69,5 @@ export const Form = styled.form`
   ${loginForm}
   ${signupForm}
   ${signupSellerForm}
+  ${orderForm}
 `;

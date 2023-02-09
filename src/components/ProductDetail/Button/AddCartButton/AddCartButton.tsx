@@ -31,12 +31,19 @@ export default function AddCartButton({ product_id, quantity }: any) {
   });
 
   const { openModal } = useModals();
-  const { loginType } = useContext(AuthContext);
+  const { loginType, isLogedIn } = useContext(AuthContext);
 
   const handleClick = () => {
+    if (!isLogedIn) {
+      openModal(modals.confirmModal, {
+        text: "장바구니는 회원만 이용하실 수 있습니다.",
+      });
+
+      return;
+    }
     if (loginType === "SELLER") {
       openModal(modals.confirmModal, {
-        text: "장바구니는 구매자만 이용 하실 수 있습니다.",
+        text: "장바구니는 구매자만 이용하실 수 있습니다.",
       });
       return;
     } else {

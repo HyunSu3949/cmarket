@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
-import useProductDetail from "src/components/hooks/useProductDetailPage";
 import useCart from "src/components/Cart/useCart";
 import useModals from "src/components/modal/hooks/useModals";
 import { modals } from "src/components/modal/Modals";
 import { Link } from "react-router-dom";
+import * as S from "./CartProduct.style";
+import { toLocaleString } from "src/components/Form/utils/toLocaleString";
 
 type Item = {
   cart_item_id: number;
@@ -56,43 +56,47 @@ export default function CartProduct(props: Item) {
     order_kind: "cart_one_order",
     quantity,
     total_price,
+    price,
     product_id,
+    shipping_fee,
   };
+  const method = shipping_method === "PARCEL" ? "택배배송" : "소포";
+  const fee = shipping_fee === 0 ? "무료배송" : shipping_fee + "원";
   return (
     <li>
-      <div style={{ display: "flex" }}>
-        <img
-          src={image}
-          alt="상품이미지"
-          style={{ width: "100px", height: "100px" }}
-        />
-        <div>
-          <p>{store_name}</p>
-          <p>{product_name}</p>
-          <p>{price}</p>
-          <p>
-            {shipping_method}/{shipping_fee}
-          </p>
-        </div>
-        <div onClick={openEditModal}>
-          <button>| - |</button>
+      <S.Wrapper>
+        <S.Img src={image} alt="상품이미지" />
+        <S.ProductInfoContainer>
+          <S.StoreName>{store_name}</S.StoreName>
+          <S.ProductName>{product_name}</S.ProductName>
+          <S.ProductPrice>{toLocaleString(price)}원</S.ProductPrice>
+          <S.Method_Fee>
+            {method} / {fee}
+          </S.Method_Fee>
+        </S.ProductInfoContainer>
+        <S.QuantityBtn onClick={openEditModal}>
+          <button>
+            <S.MinusIcon />
+          </button>
           <span> {quantity}</span>
-          <button>| + |</button>
-        </div>
-        <div>
-          {total_price} 원
+          <button>
+            <S.PlusIcon />
+          </button>
+        </S.QuantityBtn>
+        <S.TotalWrapper>
+          <span>{toLocaleString(total_price)}원</span>
           <Link to={"/payment"} state={orderState}>
             주문하기
           </Link>
-        </div>
-        <button
+        </S.TotalWrapper>
+        <S.DeleteBtn
           onClick={() => {
             deleteMutate(cart_item_id);
           }}
         >
-          x
-        </button>
-      </div>
+          <S.DeleteIcon />
+        </S.DeleteBtn>
+      </S.Wrapper>
     </li>
   );
 }

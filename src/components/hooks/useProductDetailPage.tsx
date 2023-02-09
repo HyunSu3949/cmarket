@@ -4,7 +4,6 @@ import { useQuery } from "react-query";
 import { useNavigate } from "react-router-dom";
 
 async function fetchProduct(product_id: number) {
-  console.log(product_id);
   const result = await axiosInstance.get(`/products/${product_id}/`);
   return result;
 }

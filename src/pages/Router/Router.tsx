@@ -35,10 +35,11 @@ export default function Router() {
             <Route element={<NavbarLayout />}>
               <Route path="/" element={<HomePage />} />
               <Route
-                path="/product/:product_id"
+                path="/productdetail/:product_id"
                 element={<ProductDetailPage />}
               />
             </Route>
+            <Route path="/payment" element={<PaymentPage />} />
             <Route path="/login" element={<LoginPage />} />
             <Route path="/signup" element={<SignUpPage />} />
           </>
