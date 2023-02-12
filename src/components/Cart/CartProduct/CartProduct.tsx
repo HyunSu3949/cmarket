@@ -1,9 +1,9 @@
-import useCart from "src/components/Cart/useCart";
-import useModals from "src/components/modal/hooks/useModals";
-import { modals } from "src/components/modal/Modals";
+import useCart from "components/Cart/useCart";
+import useModals from "components/modal/hooks/useModals";
+import { modals } from "components/modal/Modals";
 import { Link } from "react-router-dom";
 import * as S from "./CartProduct.style";
-import { toLocaleString } from "src/components/Form/utils/toLocaleString";
+import { toLocaleString } from "components/Form/utils/toLocaleString";
 
 type Item = {
   cart_item_id: number;
@@ -84,7 +84,7 @@ export default function CartProduct(props: Item) {
           </button>
         </S.QuantityBtn>
         <S.TotalWrapper>
-          <span>{toLocaleString(total_price)}원</span>
+          <span>{toLocaleString(price * quantity)}원</span>
           <Link to={"/payment"} state={orderState}>
             주문하기
           </Link>

@@ -1,8 +1,8 @@
 import React from "react";
-import useCart from "./../useCart";
-import CartProduct from "src/components/Cart/CartProduct/CartProduct";
+import useCart from "components/Cart/useCart";
+import CartProduct from "components/Cart/CartProduct/CartProduct";
 import { useNavigate, Link } from "react-router-dom";
-import { toLocaleString } from "src/components/Form/utils/toLocaleString";
+import { toLocaleString } from "components/Form/utils/toLocaleString";
 import * as S from "./CartList.style";
 
 type Item = {
@@ -81,6 +81,7 @@ export default function CartList() {
         to={"/payment"}
         state={{
           order_kind: "cart_order",
+          total_price,
         }}
       >
         주문하기

@@ -1,5 +1,5 @@
-import ProductList from "src/components/Home/ProductList/ProductList";
-import useDocumentTitle from "./../../components/hooks/useDocumentTitle";
+import ProductList from "components/Home/ProductList/ProductList";
+import useDocumentTitle from "components/hooks/useDocumentTitle";
 
 export default function HomePage() {
   useDocumentTitle({

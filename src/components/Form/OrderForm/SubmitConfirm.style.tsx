@@ -1,5 +1,7 @@
 import styled from "styled-components";
 
+export const Wrapper = styled.div``;
+
 export const H3 = styled.h3`
   font-weight: bold;
   font-size: 24px;
@@ -7,14 +9,20 @@ export const H3 = styled.h3`
   margin-bottom: 18px;
 `;
 
-export const Wrapper = styled.div``;
-
-export const InfoContainer = styled.div`
+export const SubmitInfoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   width: 480px;
   height: 400px;
   border: 2px solid #21bf48;
   border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 30px;
+`;
+export const TextContainer = styled.div`
   padding: 30px;
+
   > div {
     display: flex;
     justify-content: space-between;
@@ -49,11 +57,13 @@ export const TotalPrice = styled.div`
 
 export const SubmitContainer = styled.div`
   width: 100%;
-  background: #f2f2f2;
   display: flex;
   flex-direction: column;
+  background: #f2f2f2;
+  padding: 30px;
   div {
     display: flex;
+    margin-bottom: 30px;
   }
   input {
     margin-right: 4px;
@@ -76,6 +86,7 @@ export const Button = styled.button`
   line-height: 30px;
   display: block;
   text-align: center;
+  margin: 0 auto;
   ${(props: buttonProp) =>
     !props.disabled &&
     `

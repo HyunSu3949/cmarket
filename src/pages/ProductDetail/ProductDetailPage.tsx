@@ -1,4 +1,4 @@
-import ProductDetail from "src/components/ProductDetail/Product/ProductDetail";
+import ProductDetail from "components/ProductDetail/Product/ProductDetail";
 import { useParams } from "react-router-dom";
 
 export default function ProductDetailPage() {

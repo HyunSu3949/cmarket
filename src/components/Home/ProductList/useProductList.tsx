@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
-import axiosInstance from "src/lib/axiosInstance";
+import axiosInstance from "lib/axiosInstance";
 import { useQuery } from "react-query";
-import { queryClient } from "src/lib/react-query/queryClient";
+import { queryClient } from "lib/react-query/queryClient";
 
 async function fetchProduct(currentPage: number) {
   const result = axiosInstance.get(`/products/?page=${currentPage}`);
-
   return result;
 }
 

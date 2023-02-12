@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { FormContext } from "../FormCommon/FormProvider";
 import * as S from "./MsgFromServer.style";
-import Loading from "src/components/common/Loading/Loading";
+import Loading from "components/common/Loading/Loading";
 
 type Props = {
   type: string;

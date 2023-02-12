@@ -1,10 +1,10 @@
-import LoginForm from "src/components/Form/LoginForm/LoginForm";
+import LoginForm from "components/Form/LoginForm/LoginForm";
 import { Link, useNavigate } from "react-router-dom";
-import { loginValidate } from "src/components/Form/utils/formValidation";
-import FormProvider from "src/components/Form/FormCommon/FormProvider";
+import { loginValidate } from "components/Form/utils/formValidation";
+import FormProvider from "components/Form/FormCommon/FormProvider";
 import { useContext } from "react";
-import { AuthContext } from "src/lib/auth/AuthProvider/AuthProvider";
-import logo from "src/assets/images/Logo-hodu.png";
+import { AuthContext } from "lib/auth/AuthProvider/AuthProvider";
+import logo from "assets/images/Logo-hodu.png";
 import * as S from "./LoginPage.style";
 
 export default function LoginPage() {

@@ -1,15 +1,15 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import HomePage from "src/pages/Home/HomePage";
-import LoginPage from "src/pages/Login/LoginPage";
-import SignUpPage from "src/pages/SignUp/SignUpPage";
-import CartPage from "src/pages/Cart/CartPage";
-import ProductDetailPage from "src/pages/ProductDetail/ProductDetailPage";
-import PaymentPage from "src/pages/Payment/PaymentPage";
+import HomePage from "pages/Home/HomePage";
+import LoginPage from "pages/Login/LoginPage";
+import SignUpPage from "pages/SignUp/SignUpPage";
+import CartPage from "pages/Cart/CartPage";
+import ProductDetailPage from "pages/ProductDetail/ProductDetailPage";
+import PaymentPage from "pages/Payment/PaymentPage";
 import { useContext } from "react";
-import { AuthContext } from "src/lib/auth/AuthProvider/AuthProvider";
-import SellerPage from "src/pages/SellerPage/SellerPage";
-import NavbarLayout from "src/components/common/NavBar/NavbarLayout";
-import EditProduct from "src/pages/EditProduct/EditProduct";
+import { AuthContext } from "lib/auth/AuthProvider/AuthProvider";
+import SellerPage from "pages/SellerPage/SellerPage";
+import NavbarLayout from "components/common/NavBar/NavbarLayout";
+import EditProduct from "pages/EditProduct/EditProduct";
 
 export default function Router() {
   const { isLogedIn } = useContext(AuthContext);
@@ -26,9 +26,9 @@ export default function Router() {
                 path="/productdetail/:product_id"
                 element={<ProductDetailPage />}
               />
+              <Route path="/sellerpage" element={<SellerPage />} />
+              <Route path="/editproduct" element={<EditProduct />} />
             </Route>
-            <Route path="/sellerpage" element={<SellerPage />} />
-            <Route path="/editproduct" element={<EditProduct />} />
           </>
         ) : (
           <>

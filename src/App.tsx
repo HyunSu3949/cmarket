@@ -1,13 +1,13 @@
 import { QueryClientProvider } from "react-query";
 import { ReactQueryDevtools } from "react-query/devtools";
-import { queryClient } from "src/lib/react-query/queryClient";
+import { queryClient } from "lib/react-query/queryClient";
 import { ToastContainer } from "react-toastify";
-import Router from "src/pages/Router/Router";
+import Router from "pages/Router/Router";
 import "react-toastify/dist/ReactToastify.css";
 import ModalProvider from "./components/modal/ModalProvider";
-import Modals from "src/components/modal/Modals";
-import AuthProvider from "src/lib/auth/AuthProvider/AuthProvider";
-import GlobalStyles from "src/style/GlobalStyle/GlobalStyle";
+import Modals from "components/modal/Modals";
+import AuthProvider from "lib/auth/AuthProvider/AuthProvider";
+import GlobalStyles from "style/GlobalStyle/GlobalStyle";
 
 function App() {
   return (

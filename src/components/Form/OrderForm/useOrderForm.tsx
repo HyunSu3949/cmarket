@@ -1,6 +1,7 @@
-import axiosInstance from "src/lib/axiosInstance";
+import axiosInstance from "lib/axiosInstance";
 import { useMutation } from "react-query";
-import useCart from "src/components/Cart/useCart";
+import useCart from "components/Cart/useCart";
+import { queryClient } from "lib/react-query/queryClient";
 
 async function orderProduct(orderInfo: any) {
   const result = await axiosInstance.post("/order/", orderInfo);
@@ -11,7 +12,7 @@ type Props = {
   order_kind: "cart_order" | "cart_one_order" | "direct_order";
   product_id: number;
   quantity?: number;
-  product_price?: number;
+  price?: number;
   shipping_fee?: number;
 };
 
@@ -19,8 +20,8 @@ export default function useOrderForm(props: Props) {
   const { mutate: orderMutate } = useMutation(
     (orderInfo) => orderProduct(orderInfo),
     {
-      onSuccess: (data) => {
-        console.log(data);
+      onSuccess: () => {
+        queryClient.invalidateQueries(["cart"]);
       },
     }
   );
@@ -28,15 +29,9 @@ export default function useOrderForm(props: Props) {
   const { total_price } = useCart();
   const onSubmit = async (formValues: any) => {
     const { order_kind } = props;
-
-    if (order_kind === ("direct_order" || "cart_one_order")) {
-      const {
-        product_id,
-        quantity = 0,
-        product_price = 0,
-        shipping_fee = 0,
-      } = props;
-      const total_price = quantity * product_price + shipping_fee;
+    if (order_kind === "direct_order" || order_kind === "cart_one_order") {
+      const { product_id, quantity = 0, price = 0, shipping_fee = 0 } = props;
+      const total_price = quantity * price + shipping_fee;
       const orderInfo = {
         product_id,
         quantity,

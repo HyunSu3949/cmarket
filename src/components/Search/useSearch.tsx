@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axiosInstance from "src/lib/axiosInstance";
+import axiosInstance from "lib/axiosInstance";
 import { useQuery } from "react-query";
 
 async function searchProduct(keyword: string) {

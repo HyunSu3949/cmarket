@@ -30,3 +30,10 @@ export const Span = styled.span`
   font-size: 16px;
   line-height: 20px;
 `;
+
+export const PaymentInfoContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 70px;
+`;

@@ -1,5 +1,5 @@
-import useProductList from "src/components/Home/ProductList/useProductList";
-import Product from "src/components/Home/Product/Product";
+import useProductList from "components/Home/ProductList/useProductList";
+import Product from "components/Home/Product/Product";
 import * as S from "./ProductListStyle";
 import Pagination from "react-js-pagination";
 

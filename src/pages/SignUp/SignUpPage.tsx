@@ -1,10 +1,10 @@
 import { useState } from "react";
-import SignUpForm from "src/components/Form/SignUpForm/Buyer/SignUpForm";
-import { signUpValidate } from "./../../components/Form/utils/formValidation";
-import FormProvider from "src/components/Form/FormCommon/FormProvider";
-import SellerSignUpForm from "src/components/Form/SignUpForm/Seller/SellerSignUpForm";
+import SignUpForm from "components/Form/SignUpForm/Buyer/SignUpForm";
+import { signUpValidate } from "components/Form/utils/formValidation";
+import FormProvider from "components/Form/FormCommon/FormProvider";
+import SellerSignUpForm from "components/Form/SignUpForm/Seller/SellerSignUpForm";
 import * as S from "./SignUpPage.style";
-import logo from "src/assets/images/Logo-hodu.png";
+import logo from "assets/images/Logo-hodu.png";
 import { Link } from "react-router-dom";
 
 export default function SignUpPage() {

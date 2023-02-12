@@ -1,6 +1,6 @@
-import useCart from "src/components/Cart/useCart";
+import useCart from "components/Cart/useCart";
 import * as S from "./OrderProduct.style";
-import { toLocaleString } from "src/components/Form/utils/toLocaleString";
+import { toLocaleString } from "components/Form/utils/toLocaleString";
 
 type Props = {
   product_id: number;
@@ -29,7 +29,7 @@ export default function OrderProduct({ product_id }: Props) {
       <S.DiscountContainer>-</S.DiscountContainer>
       <S.ShippingFeeContainer>{fee}</S.ShippingFeeContainer>
       <S.TotalPriceContainer>
-        <span>{toLocaleString(totalPrice)}원</span>
+        <span>{toLocaleString(price * quantity)}원</span>
       </S.TotalPriceContainer>
     </S.Wrapper>
   );

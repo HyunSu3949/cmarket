@@ -1,14 +1,13 @@
-import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
-import FormProvider from "src/components/Form/FormCommon/FormProvider";
-import OrderForm from "src/components/Form/OrderForm/OrderForm";
-import { orderValidate } from "./../../components/Form/utils/formValidation";
-import OrderProductList from "./../../components/Payment/OrderProductList/OrderProductList";
-import OrderProduct from "src/components/Payment/OrderProduct/OrderProduct";
-import DirectOrderProduct from "src/components/Payment/DirectOrderProduct/DirectOrderProduct";
-import useCart from "src/components/Cart/useCart";
+import FormProvider from "components/Form/FormCommon/FormProvider";
+import OrderForm from "components/Form/OrderForm/OrderForm";
+import { orderValidate } from "components/Form/utils/formValidation";
+import OrderProductList from "components/Payment/OrderProductList/OrderProductList";
+import OrderProduct from "components/Payment/OrderProduct/OrderProduct";
+import DirectOrderProduct from "components/Payment/DirectOrderProduct/DirectOrderProduct";
+import useCart from "components/Cart/useCart";
 import * as S from "./PaymentPage.style";
-import { toLocaleString } from "./../../components/Form/utils/toLocaleString";
+import { toLocaleString } from "components/Form/utils/toLocaleString";
 
 type Props = {
   order_kind: "cart_order" | "cart_one_order" | "direct_order";

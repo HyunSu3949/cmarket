@@ -1,12 +1,12 @@
-import InputField from "src/components/Form/FormCommon/InputField";
-import ValidationMessage from "src/components/Form/FormCommon/ValidationMessage";
-import Form from "src/components/Form/FormCommon/Form";
+import InputField from "components/Form/FormCommon/InputField";
+import ValidationMessage from "components/Form/FormCommon/ValidationMessage";
+import Form from "components/Form/FormCommon/Form";
 import MsgFromServer from "../MsgFromServer";
-import useSellerSignUpForm from "src/components/Form/SignUpForm/Seller/useSellerSignUpForm";
-import SubmitBtn from "src/components/Form/FormCommon/SubmitBtn";
-import ConfirmPassword from "src/components/Form/SignUpForm/ConfirmPassword";
+import useSellerSignUpForm from "components/Form/SignUpForm/Seller/useSellerSignUpForm";
+import SubmitBtn from "components/Form/FormCommon/SubmitBtn";
+import ConfirmPassword from "components/Form/SignUpForm/ConfirmPassword";
 import { useContext } from "react";
-import { FormContext } from "src/components/Form/FormCommon/FormProvider";
+import { FormContext } from "components/Form/FormCommon/FormProvider";
 import * as S from "./SellerSignUpFormStyle";
 
 export default function SellerSignUpForm() {

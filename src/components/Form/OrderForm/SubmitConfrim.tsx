@@ -28,27 +28,29 @@ export default function SubmitConfrim(props: Props) {
     order_kind === "cart_order" ? total_shipping_fee : shipping_fee;
 
   return (
-    <>
+    <S.Wrapper>
       <S.H3>최종결제 정보</S.H3>
-      <S.InfoContainer>
-        <div>
-          <S.Text>-상품금액</S.Text>{" "}
-          <S.Price>{toLocaleString(confirmPrice)}원</S.Price>
-        </div>
-        <div>
-          <S.Text>-할인금액</S.Text> <S.Price>0원</S.Price>
-        </div>
-        <div>
-          <S.Text>-배송비</S.Text>{" "}
-          <S.Price>{toLocaleString(confirmShippingFee)}원</S.Price>
-        </div>
-        <S.Divider />
-        <div>
-          <S.Text>-결제금액</S.Text>{" "}
-          <S.TotalPrice>
-            {toLocaleString(confirmPrice + confirmShippingFee)}원
-          </S.TotalPrice>
-        </div>
+      <S.SubmitInfoContainer>
+        <S.TextContainer>
+          <div>
+            <S.Text>-상품금액</S.Text>
+            <S.Price>{toLocaleString(confirmPrice)}원</S.Price>
+          </div>
+          <div>
+            <S.Text>-할인금액</S.Text> <S.Price>0원</S.Price>
+          </div>
+          <div>
+            <S.Text>-배송비</S.Text>
+            <S.Price>{toLocaleString(confirmShippingFee)}원</S.Price>
+          </div>
+          <S.Divider />
+          <div>
+            <S.Text>-결제금액</S.Text>
+            <S.TotalPrice>
+              {toLocaleString(confirmPrice + confirmShippingFee)}원
+            </S.TotalPrice>
+          </div>
+        </S.TextContainer>
         <S.SubmitContainer>
           <div>
             <input
@@ -64,7 +66,7 @@ export default function SubmitConfrim(props: Props) {
             주문하기
           </S.Button>
         </S.SubmitContainer>
-      </S.InfoContainer>
-    </>
+      </S.SubmitInfoContainer>
+    </S.Wrapper>
   );
 }

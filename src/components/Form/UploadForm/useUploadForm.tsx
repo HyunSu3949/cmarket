@@ -1,5 +1,4 @@
-import React from "react";
-import { axiosInstanceMultiForm } from "src/lib/axiosInstance";
+import { axiosInstanceMultiForm } from "lib/axiosInstance";
 import { useMutation } from "react-query";
 
 type UploadInfo = {

@@ -1,6 +1,6 @@
-import FormProvider from "src/components/Form/FormCommon/FormProvider";
-import UploadForm from "src/components/Form/UploadForm/UploadForm";
-import { uploadValidate } from "src/components/Form/utils/formValidation";
+import FormProvider from "components/Form/FormCommon/FormProvider";
+import UploadForm from "components/Form/UploadForm/UploadForm";
+import { uploadValidate } from "components/Form/utils/formValidation";
 
 export default function EditProduct() {
   const initialValues = {

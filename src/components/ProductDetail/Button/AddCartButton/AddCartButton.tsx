@@ -1,10 +1,10 @@
-import axiosInstance from "src/lib/axiosInstance";
+import axiosInstance from "lib/axiosInstance";
 import { useMutation } from "react-query";
-import { queryClient } from "src/lib/react-query/queryClient";
+import { queryClient } from "lib/react-query/queryClient";
 import { useContext } from "react";
-import { AuthContext } from "src/lib/auth/AuthProvider/AuthProvider";
-import useModals from "src/components/modal/hooks/useModals";
-import { modals } from "src/components/modal/Modals";
+import { AuthContext } from "lib/auth/AuthProvider/AuthProvider";
+import useModals from "components/modal/hooks/useModals";
+import { modals } from "components/modal/Modals";
 
 type ProductInfo = {
   product_id: number;

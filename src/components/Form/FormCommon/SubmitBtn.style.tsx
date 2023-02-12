@@ -36,8 +36,25 @@ const SignupBtn = css`
       cursor:pointer;
 `}
 `;
+const UploadBtn = css`
+  ${(props: Props) =>
+    props.className?.includes("uploadForm") &&
+    `
+      width: 200px;
+      height: 60px;
+      text-align: center;
+      color: white;
+      font-weight: bold;
+      font-size: 18px;
+      background: #21bf48;
+      border-radius: 5px;
+      margin: 30px 0;
+      cursor:pointer;
+`}
+`;
 
 export const Button = styled.button`
   ${LoginBtn}
   ${SignupBtn}
+  ${UploadBtn}
 `;

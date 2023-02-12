@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import search from "src/assets/images/search.png";
+import search from "assets/images/search.png";
 
 export const Input = styled.input.attrs({
   placeholder: "상품을 검색해보세요!",

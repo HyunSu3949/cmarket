@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import useProductDetail from "src/components/hooks/useProductDetailPage";
-import AddCartButton from "src/components/ProductDetail/Button/AddCartButton/AddCartButton";
+import useProductDetail from "components/hooks/useProductDetailPage";
+import AddCartButton from "components/ProductDetail/Button/AddCartButton/AddCartButton";
 import * as S from "./ProductDetailStyle";
 
 export default function ProductDetail({
@@ -11,9 +11,11 @@ export default function ProductDetail({
 }) {
   const id = !!product_id ? +product_id : 0;
 
-  const { productData, quantity, setQuantity } = useProductDetail({
-    product_id: id,
-  });
+  const { productData, quantity, setQuantity, preventClick } = useProductDetail(
+    {
+      product_id: id,
+    }
+  );
 
   const {
     image,
@@ -26,12 +28,11 @@ export default function ProductDetail({
 
   const fee = shipping_fee ? `${shipping_fee} 원` : "무료배송";
   const method = delivery_method === "PARCEL" ? "택배배송" : "택배배송";
-  const order_kind = "direct_order";
   const total_price = quantity * price + shipping_fee;
   const url = "/payment",
     state = {
       ...productData,
-      order_kind,
+      order_kind: "direct_order",
       quantity,
       total_price,
       shipping_fee,
@@ -79,7 +80,7 @@ export default function ProductDetail({
           </div>
         </S.PriceContainer>
         <S.BtnContainer>
-          <Link to={url} state={state}>
+          <Link to={url} state={state} onClick={preventClick}>
             바로구매
           </Link>
           <AddCartButton product_id={id} quantity={quantity}>

@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import { ReactComponent as plusIcon } from "src/assets/images/icon-plus-line.svg";
-import { ReactComponent as minusIcon } from "src/assets/images/icon-minus-line.svg";
+import { ReactComponent as plusIcon } from "assets/images/icon-plus-line.svg";
+import { ReactComponent as minusIcon } from "assets/images/icon-minus-line.svg";
 
 export const Wrapper = styled.div`
   display: flex;

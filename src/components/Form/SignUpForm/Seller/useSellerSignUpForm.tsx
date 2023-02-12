@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useMutation } from "react-query";
-import axiosInstance from "src/lib/axiosInstance";
+import axiosInstance from "lib/axiosInstance";
 import { toast } from "react-toastify";
 
 type signUpInfo = {

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { FormContext } from "src/components/Form/FormCommon/FormProvider";
+import { FormContext } from "components/Form/FormCommon/FormProvider";
 import * as S from "./SelectPaymentType.style";
 export default function SelectPaymentType() {
   const [selectedOption, setSelectedOption] = useState("CARD");
@@ -11,9 +11,9 @@ export default function SelectPaymentType() {
   };
 
   return (
-    <>
+    <S.Wrapper>
       <S.H3>결제수단</S.H3>
-      <S.Wrapper>
+      <S.MethodContainer>
         <div>
           <input
             type="radio"
@@ -22,7 +22,7 @@ export default function SelectPaymentType() {
             checked={selectedOption === "CARD"}
             onChange={handleOptionChange}
           />
-          <label htmlFor="CARD">CARD</label>
+          <label htmlFor="CARD">카드</label>
         </div>
         <div>
           <input
@@ -32,7 +32,7 @@ export default function SelectPaymentType() {
             checked={selectedOption === "DEPOSIT"}
             onChange={handleOptionChange}
           />
-          <label htmlFor="DEPOSIT">DEPOSIT</label>
+          <label htmlFor="DEPOSIT">계좌이체</label>
         </div>
         <div>
           <input
@@ -42,7 +42,7 @@ export default function SelectPaymentType() {
             checked={selectedOption === "PHONE_PAYMENT"}
             onChange={handleOptionChange}
           />
-          <label htmlFor="PHONE_PAYMENT">PHONE_PAYMENT</label>
+          <label htmlFor="PHONE_PAYMENT">휴대폰</label>
         </div>
         <div>
           <input
@@ -52,7 +52,7 @@ export default function SelectPaymentType() {
             checked={selectedOption === "NAVERPAY"}
             onChange={handleOptionChange}
           />
-          <label htmlFor="NAVERPAY">NAVERPAY</label>
+          <label htmlFor="NAVERPAY">네이버페이</label>
         </div>
         <div>
           <input
@@ -62,9 +62,9 @@ export default function SelectPaymentType() {
             checked={selectedOption === "KAKAOPAY"}
             onChange={handleOptionChange}
           />
-          <label htmlFor="KAKAOPAY">KAKAOPAY</label>
+          <label htmlFor="KAKAOPAY">카카오페이</label>
         </div>
-      </S.Wrapper>
-    </>
+      </S.MethodContainer>
+    </S.Wrapper>
   );
 }

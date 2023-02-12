@@ -1,10 +1,10 @@
 import React from "react";
-import InputField from "src/components/Form/FormCommon/InputField";
-import ValidationMessage from "src/components/Form//FormCommon/ValidationMessage";
-import Form from "src/components/Form/FormCommon/Form";
+import InputField from "components/Form/FormCommon/InputField";
+import ValidationMessage from "components/Form//FormCommon/ValidationMessage";
+import Form from "components/Form/FormCommon/Form";
 import useOrderForm from "./useOrderForm";
-import SelectPaymentType from "src/components/Form/OrderForm/SelectPaymentType";
-import SubmitConfrim from "src/components/Form/OrderForm/SubmitConfrim";
+import SelectPaymentType from "components/Form/OrderForm/SelectPaymentType";
+import SubmitConfrim from "components/Form/OrderForm/SubmitConfrim";
 import * as S from "./OrderForm.style";
 
 type Props = {
@@ -58,9 +58,10 @@ export default function OrderForm(props: Props) {
         />
         <ValidationMessage name={"address_message"} />
       </S.InputWrapper>
-      <SelectPaymentType />
-
-      <SubmitConfrim {...props} />
+      <S.PaymentInfoContainer>
+        <SelectPaymentType />
+        <SubmitConfrim {...props} />
+      </S.PaymentInfoContainer>
     </Form>
   );
 }

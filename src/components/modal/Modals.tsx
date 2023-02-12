@@ -1,14 +1,14 @@
 import React, { useContext, Component } from "react";
 import styled from "styled-components";
 
-import QuantityEditModal from "src/components/modal/QuantityEditModal";
-import MyModal from "src/components/modal/MyModal";
+import QuantityEditModal from "components/modal/QuantityEditModal";
+import MyModal from "components/modal/MyModal";
 
 import ConfirmModal from "./ConfirmModal";
 import {
   ModalsStateContext,
   ModalsDispatchContext,
-} from "src/components/modal/ModalProvider";
+} from "components/modal/ModalProvider";
 
 export const modals = {
   quantityEditModal: QuantityEditModal,

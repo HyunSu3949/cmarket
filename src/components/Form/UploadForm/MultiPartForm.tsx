@@ -1,12 +1,13 @@
 import { useContext, ReactNode } from "react";
-import { FormContext } from "src/components/Form/FormCommon/FormProvider";
+import { FormContext } from "components/Form/FormCommon/FormProvider";
+import styled from "styled-components";
 
 type FormProps = {
   onSubmit: (values: any) => Promise<void>;
   children: ReactNode;
 };
 
-export default function FormWithImg({ onSubmit, children }: FormProps) {
+export default function MultiPartForm({ onSubmit, children }: FormProps) {
   const { canSubmit, values }: any = useContext(FormContext);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -38,8 +39,20 @@ export default function FormWithImg({ onSubmit, children }: FormProps) {
   };
 
   return (
-    <form onSubmit={handleSubmit} encType="multipart/form-data">
+    <Form onSubmit={handleSubmit} encType="multipart/form-data">
       {children}
-    </form>
+    </Form>
   );
 }
+
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+  line-height: 20px;
+  width: fit-content;
+  button {
+    margin-left: auto;
+  }
+  margin: 0 auto;
+`;

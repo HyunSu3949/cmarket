@@ -1,11 +1,11 @@
-import InputField from "src/components/Form/FormCommon/InputField";
-import ValidationMessage from "src/components/Form//FormCommon/ValidationMessage";
-import Form from "src/components/Form/FormCommon/Form";
+import InputField from "components/Form/FormCommon/InputField";
+import ValidationMessage from "components/Form//FormCommon/ValidationMessage";
+import Form from "components/Form/FormCommon/Form";
 import useLoginForm from "./useLoginForm";
-import SubmitBtn from "src/components/Form//FormCommon/SubmitBtn";
+import SubmitBtn from "components/Form//FormCommon/SubmitBtn";
 import * as S from "./LoginFormStyle";
 import { useContext } from "react";
-import { FormContext } from "src/components/Form/FormCommon/FormProvider";
+import { FormContext } from "components/Form/FormCommon/FormProvider";
 
 export default function LoginForm() {
   const { msgFromServer, onSubmit, setLoginType, loginType } = useLoginForm();

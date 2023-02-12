@@ -1,9 +1,8 @@
 import { useState, useEffect, useContext } from "react";
 import { useMutation } from "react-query";
 import { useNavigate } from "react-router-dom";
-import axiosInstance from "src/lib/axiosInstance";
-import { AuthContext } from "src/lib/auth/AuthProvider/AuthProvider";
-import { FormContext } from "src/components/Form/FormCommon/FormProvider";
+import axiosInstance from "lib/axiosInstance";
+import { AuthContext } from "lib/auth/AuthProvider/AuthProvider";
 
 type UserInfo = {
   username: string;

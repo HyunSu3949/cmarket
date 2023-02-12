@@ -145,7 +145,7 @@ export function uploadValidate(name: string, value: string | number) {
     stock: (value: number) => {
       return "";
     },
-    products_info: (value: string) => {
+    product_info: (value: string) => {
       return "";
     },
   };

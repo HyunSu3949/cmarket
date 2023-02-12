@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 type Props = {
   className?: string;
+  name?: string;
 };
 
 const InputLogin = css`
@@ -111,6 +112,19 @@ ${(props: Props) =>
     `
   `}
 `;
+const InputEditProduct = css`
+  width: 220px;
+  font-size: 16px;
+  line-height: 20px;
+  padding-left: 16px;
+  ${(props: Props) =>
+    props.name?.includes("product_name") &&
+    `
+      width: 534px;
+      height: 40px;
+      border: 1px solid #C4C4C4;
+`}
+`;
 
 export const Input = styled.input`
   ${InputLogin};
@@ -120,4 +134,6 @@ export const Input = styled.input`
   ${InputSignupSeller};
 
   ${InputOrder}
+
+  ${InputEditProduct}
 `;

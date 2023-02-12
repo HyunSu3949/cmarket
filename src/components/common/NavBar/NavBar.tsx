@@ -1,9 +1,9 @@
 import React from "react";
-import SearchBar from "src/components/Search/SearchBar";
-import useModals from "src/components/modal/hooks/useModals";
+import SearchBar from "components/Search/SearchBar";
+import useModals from "components/modal/hooks/useModals";
 import { useContext } from "react";
-import { AuthContext } from "src/lib/auth/AuthProvider/AuthProvider";
-import { modals } from "src/components/modal/Modals";
+import { AuthContext } from "lib/auth/AuthProvider/AuthProvider";
+import { modals } from "components/modal/Modals";
 import * as S from "./Navbar.style";
 import { Link } from "react-router-dom";
 
@@ -20,8 +20,8 @@ export default function NavBar() {
   };
 
   return (
-    <S.Nav style={{ display: "flex" }}>
-      <div className="wrapper">
+    <S.Wrapper>
+      <S.Nav style={{ display: "flex" }}>
         <div>
           <Link to={"/"}>
             <S.LogoImg src="" alt="메인 로고" />
@@ -36,25 +36,25 @@ export default function NavBar() {
                 마이페이지
               </S.MyPageBtn>
               {loginType === "BUYER" ? (
-                <S.StyledLink to="/cart" id="cart">
+                <S.StyledLink to="/cart" className="cart">
                   <S.CartIcon />
                   장바구니
                 </S.StyledLink>
               ) : (
-                <S.StyledLink to="/sellerpage" id="seller">
+                <S.StyledLink to="/sellerpage" className="sellerPage">
                   <S.BagIcon />
                   판매자 센터
                 </S.StyledLink>
               )}
             </>
           ) : (
-            <S.StyledLink to="/login" id="login">
+            <S.StyledLink to="/login" className="login">
               <S.HumanIcon />
               로그인
             </S.StyledLink>
           )}
         </div>
-      </div>
-    </S.Nav>
+      </S.Nav>
+    </S.Wrapper>
   );
 }
