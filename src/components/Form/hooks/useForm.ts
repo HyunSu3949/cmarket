@@ -1,12 +1,12 @@
 import { useState } from "react";
 
 type ObjectValues = {
-  [key: string]: string;
+  [key: string]: string | number | null;
 };
 
 type Props = {
   initialValues: ObjectValues;
-  validate: (values: string, name: string) => string;
+  validate: (name: string, value: string | number) => string;
 };
 
 export default function useForm({ initialValues, validate }: Props) {

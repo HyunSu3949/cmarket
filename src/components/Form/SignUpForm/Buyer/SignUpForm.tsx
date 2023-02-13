@@ -27,7 +27,7 @@ export default function SignUpForm() {
   return (
     <Form onSubmit={onSubmit} className={"signup_buyer"}>
       <S.FormBlock>
-        <S.Span>아이디</S.Span>
+        <span>아이디</span>
         <S.UsernameContainer>
           <InputField
             name={"username"}
@@ -35,12 +35,12 @@ export default function SignUpForm() {
             className={"signup_buyer username"}
           />
           <S.CheckBtn type={"button"} onClick={handleClick} disabled={disabled}>
-            <S.Span>중복확인</S.Span>
+            <span>중복확인</span>
           </S.CheckBtn>
         </S.UsernameContainer>
         <ValidationMessage name={"username"} />
         <MsgFromServer type={"username"} msgFromServer={msgFromServer} />
-        <S.Span>비밀번호</S.Span>
+        <span>비밀번호</span>
         <InputField
           name={"password"}
           type={"password"}
@@ -48,21 +48,21 @@ export default function SignUpForm() {
         />
         <ValidationMessage name={"password"} />
         <MsgFromServer type={"password"} msgFromServer={msgFromServer} />
-        <S.Span>비밀번호 재확인</S.Span>
+        <span>비밀번호 재확인</span>
         <InputField
           name={"password2"}
           type={"password"}
           className={"signup_buyer password"}
         />
         <ConfirmPassword />
-        <S.Span>이름</S.Span>
+        <span>이름</span>
         <InputField
           name={"name"}
           type={"text"}
           className={"signup_buyer name"}
         />
         <ValidationMessage name={"name"} />
-        <S.Span>휴대폰번호</S.Span>
+        <span>휴대폰번호</span>
         <InputField
           name={"phone_number"}
           type={"text"}

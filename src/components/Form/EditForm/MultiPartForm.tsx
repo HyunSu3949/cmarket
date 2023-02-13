@@ -25,8 +25,9 @@ export default function MultiPartForm({
       shipping_fee,
       stock,
       product_info,
-      token,
+      product_id,
     } = values;
+
     const formData = new FormData();
     formData.append("image", image);
     formData.append("product_name", product_name);
@@ -35,11 +36,10 @@ export default function MultiPartForm({
     formData.append("shipping_fee", shipping_fee);
     formData.append("stock", stock);
     formData.append("product_info", product_info);
-    formData.append("token", token);
     if (canSubmit()) {
       return;
     } else {
-      onSubmit(formData);
+      onSubmit({ formData, product_id });
     }
   };
 

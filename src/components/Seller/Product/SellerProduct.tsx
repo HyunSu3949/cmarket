@@ -18,6 +18,9 @@ type Props = {
 export default function SellerProduct(props: Props) {
   const { product_id, product_name, stock, image, price } = props;
   const { deleteProductMutate } = useSeller();
+  const state = {
+    ...props,
+  };
   return (
     <S.Wrapper>
       <li>
@@ -27,7 +30,9 @@ export default function SellerProduct(props: Props) {
           <span>재고:{stock} 개</span>
         </div>
         <S.Price>{toLocaleString(price)}원</S.Price>
-        <S.StyledLink to="/editproduct">수정</S.StyledLink>
+        <S.StyledLink to="/editproduct" state={state}>
+          수정
+        </S.StyledLink>
         <S.Button onClick={() => deleteProductMutate(product_id)}>
           삭제
         </S.Button>

@@ -3,14 +3,13 @@ import styled from "styled-components";
 export const FormBlock = styled.div`
   display: flex;
   flex-direction: column;
+  span {
+    margin: 12px 0;
+  }
 `;
 
 export const InputWrapper = styled.div`
   height: 24px;
-`;
-
-export const Span = styled.span`
-  margin: 12px 0;
 `;
 
 export const UsernameContainer = styled.div`

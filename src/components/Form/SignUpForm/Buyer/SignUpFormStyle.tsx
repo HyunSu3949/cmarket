@@ -3,10 +3,9 @@ import styled from "styled-components";
 export const FormBlock = styled.div`
   display: flex;
   flex-direction: column;
-`;
-
-export const InputWrapper = styled.div`
-  height: 24px;
+  span {
+    margin: 12px 0;
+  }
 `;
 
 export const CheckBtn = styled.button`
@@ -22,8 +21,4 @@ export const CheckBtn = styled.button`
 
 export const UsernameContainer = styled.div`
   display: flex;
-`;
-
-export const Span = styled.span`
-  margin: 12px 0;
 `;

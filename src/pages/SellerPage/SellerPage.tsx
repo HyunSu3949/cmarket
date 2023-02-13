@@ -8,7 +8,7 @@ export default function SellerPage() {
 
   return (
     <S.Wrapper>
-      <S.StyledLink to={"/editproduct"}>상품 업로드</S.StyledLink>
+      <S.StyledLink to={"/uploadproduct"}>상품 업로드</S.StyledLink>
       <div>
         <S.BtnNav>
           <S.Button

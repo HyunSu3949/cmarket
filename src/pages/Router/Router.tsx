@@ -10,6 +10,8 @@ import { AuthContext } from "lib/auth/AuthProvider/AuthProvider";
 import SellerPage from "pages/SellerPage/SellerPage";
 import NavbarLayout from "components/common/NavBar/NavbarLayout";
 import EditProduct from "pages/EditProduct/EditProduct";
+import UploadProduct from "pages/UploadProduct.tsx/UploadProduct";
+import MyOrderPage from "./../MyOrder/MyOrderPage";
 
 export default function Router() {
   const { isLogedIn } = useContext(AuthContext);
@@ -28,6 +30,8 @@ export default function Router() {
               />
               <Route path="/sellerpage" element={<SellerPage />} />
               <Route path="/editproduct" element={<EditProduct />} />
+              <Route path="/uploadproduct" element={<UploadProduct />} />
+              <Route path="/myorder" element={<MyOrderPage />} />
             </Route>
           </>
         ) : (

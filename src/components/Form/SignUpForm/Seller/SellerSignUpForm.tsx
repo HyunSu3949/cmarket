@@ -28,8 +28,6 @@ export default function SellerSignUpForm() {
     validateUsernameMutate(usernameValue);
   };
   const registNumberCheck = async () => {
-    console.log("reg");
-
     validateRegistNumberMutate(registNumberValue);
   };
 
@@ -38,8 +36,8 @@ export default function SellerSignUpForm() {
 
   return (
     <Form onSubmit={onSubmit} className={"signup_seller"}>
-      <S.Span>아이디</S.Span>
       <S.FormBlock>
+        <span>아이디</span>
         <S.UsernameContainer>
           <InputField
             name={"username"}
@@ -51,12 +49,12 @@ export default function SellerSignUpForm() {
             onClick={usernameCheck}
             disabled={disabled_user}
           >
-            <S.Span>중복확인</S.Span>
+            <span>중복확인</span>
           </S.CheckBtn>
         </S.UsernameContainer>
         <ValidationMessage name={"username"} />
         <MsgFromServer type={"username"} msgFromServer={msgFromServer} />
-        <S.Span>비밀번호</S.Span>
+        <span>비밀번호</span>
         <InputField
           name={"password"}
           type={"password"}
@@ -64,21 +62,21 @@ export default function SellerSignUpForm() {
         />
         <ValidationMessage name={"password"} />
         <MsgFromServer type={"password"} msgFromServer={msgFromServer} />
-        <S.Span>비밀번호 재확인</S.Span>
+        <span>비밀번호 재확인</span>
         <InputField
           name={"password2"}
           type={"password"}
           className={"signup_seller password"}
         />
         <ConfirmPassword />
-        <S.Span>이름</S.Span>
+        <span>이름</span>
         <InputField
           name={"name"}
           type={"text"}
           className={"signup_seller name"}
         />
         <ValidationMessage name={"name"} />
-        <S.Span>휴대폰번호</S.Span>
+        <span>휴대폰번호</span>
         <InputField
           name={"phone_number"}
           type={"text"}
@@ -86,7 +84,7 @@ export default function SellerSignUpForm() {
         />
         <ValidationMessage name={"phone_number"} />
         <MsgFromServer type={"phone_number"} msgFromServer={msgFromServer} />
-        <S.Span>사업자 등록번호</S.Span>
+        <span>사업자 등록번호</span>
         <S.C_NumberContainer>
           <InputField
             name={"company_registration_number"}
@@ -106,7 +104,7 @@ export default function SellerSignUpForm() {
           type={"company_registration_number"}
           msgFromServer={msgFromServer}
         />
-        <S.Span>스토어 이름</S.Span>
+        <span>스토어 이름</span>
         <InputField
           name={"store_name"}
           type={"text"}

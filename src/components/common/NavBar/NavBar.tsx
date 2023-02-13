@@ -1,13 +1,13 @@
-import React from "react";
 import SearchBar from "components/Search/SearchBar";
 import useModals from "components/modal/hooks/useModals";
 import { useContext } from "react";
 import { AuthContext } from "lib/auth/AuthProvider/AuthProvider";
 import { modals } from "components/modal/Modals";
 import * as S from "./Navbar.style";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 export default function NavBar() {
+  const navigate = useNavigate();
   const { isLogedIn, loginType, handleLogout } = useContext(AuthContext);
 
   const { openModal } = useModals();
@@ -15,6 +15,9 @@ export default function NavBar() {
     openModal(modals.myModal, {
       onLogout: () => {
         handleLogout();
+      },
+      goToOrderPage: () => {
+        navigate("/myorder");
       },
     });
   };

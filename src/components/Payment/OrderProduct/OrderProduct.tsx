@@ -14,7 +14,6 @@ export default function OrderProduct({ product_id }: Props) {
   const { image, price, store_name, product_name, quantity, shipping_fee } =
     product;
 
-  const totalPrice = price * quantity + shipping_fee;
   const fee =
     shipping_fee === 0 ? "무료배송" : toLocaleString(shipping_fee) + "원";
 

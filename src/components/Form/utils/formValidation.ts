@@ -1,4 +1,4 @@
-export function signUpValidate(name: string, value: string) {
+export function signUpValidate(name: string, value: string | number) {
   const validates: any = {
     username: (value: string) => {
       if (!value) {
@@ -69,7 +69,7 @@ export function signUpValidate(name: string, value: string) {
   return validates[name](value);
 }
 
-export function loginValidate(name: string, value: string): string {
+export function loginValidate(name: string, value: string | number): string {
   const validates: any = {
     username: (value: string) => {
       if (!value) {
@@ -88,7 +88,7 @@ export function loginValidate(name: string, value: string): string {
   return validates[name](value);
 }
 
-export function orderValidate(name: string, value: string): string {
+export function orderValidate(name: string, value: string | number): string {
   const validates: any = {
     receiver: (value: string) => {
       if (!value) {
@@ -123,7 +123,7 @@ export function uploadValidate(name: string, value: string | number) {
   const validates: any = {
     product_name: (value: string) => {
       if (!value) {
-        return "아이디를 입력하세요";
+        return "상품명을 입력하세요";
       }
       if (value.length > 20) {
         return "최대 20자 까지 가능합니다.";
@@ -137,12 +137,30 @@ export function uploadValidate(name: string, value: string | number) {
       return "";
     },
     price: (value: number) => {
+      if (!value) {
+        return "판매가를 입력하세요";
+      }
+      if (isNaN(value)) {
+        return "숫자만 입력해주세요";
+      }
       return "";
     },
     shipping_fee: (value: number) => {
+      if (!value) {
+        return "배송비를 입력하세요";
+      }
+      if (isNaN(value)) {
+        return "숫자만 입력해주세요";
+      }
       return "";
     },
     stock: (value: number) => {
+      if (!value) {
+        return "재고를 입력하세요";
+      }
+      if (isNaN(value)) {
+        return "숫자만 입력해주세요";
+      }
       return "";
     },
     product_info: (value: string) => {

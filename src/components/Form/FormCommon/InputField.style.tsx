@@ -2,6 +2,8 @@ import styled, { css } from "styled-components";
 type Props = {
   className?: string;
   name?: string;
+  placeholder?: string;
+  value?: string | number;
 };
 
 const InputLogin = css`
@@ -17,13 +19,13 @@ const InputLogin = css`
   ${(props: Props) =>
     props.className?.includes("loginForm username") &&
     `
-    margin-bottom: 6px
+      margin-bottom: 6px
     `}
 
 ${(props: Props) =>
     props.className?.includes("loginForm password") &&
     `
-    margin-bottom: 6px
+      margin-bottom: 6px
   `}
 `;
 
@@ -112,21 +114,24 @@ ${(props: Props) =>
     `
   `}
 `;
-const InputEditProduct = css`
-  width: 220px;
+const InputUploadProduct = css`
   font-size: 16px;
   line-height: 20px;
   padding-left: 16px;
   ${(props: Props) =>
-    props.name?.includes("product_name") &&
+    props.className?.includes("uploadForm product_name") &&
     `
       width: 534px;
       height: 40px;
       border: 1px solid #C4C4C4;
+    
 `}
 `;
 
 export const Input = styled.input`
+  :focus {
+    border: 1px solid #21bf48;
+  }
   ${InputLogin};
 
   ${InputSignup};
@@ -135,5 +140,5 @@ export const Input = styled.input`
 
   ${InputOrder}
 
-  ${InputEditProduct}
+  ${InputUploadProduct}
 `;

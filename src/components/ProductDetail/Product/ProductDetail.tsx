@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import useProductDetail from "components/hooks/useProductDetailPage";
-import AddCartButton from "components/ProductDetail/Button/AddCartButton/AddCartButton";
+import AddCartButton from "components/ProductDetail/AddCartButton/AddCartButton";
 import * as S from "./ProductDetailStyle";
 
 export default function ProductDetail({

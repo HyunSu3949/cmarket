@@ -9,7 +9,6 @@ type UploadInfo = {
   shipping_fee: number;
   stock: number;
   products_info: string;
-  token: string;
 };
 
 async function uploadProduct(uploadInfo: UploadInfo) {

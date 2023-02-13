@@ -1,17 +1,17 @@
 import InputField from "components/Form/FormCommon/InputField";
 import ValidationMessage from "components/Form/FormCommon/ValidationMessage";
 import SubmitBtn from "components/Form/FormCommon/SubmitBtn";
-import SelectShippingMethod from "components/Form/UploadForm/SelectShippingMethod";
-import useUploadForm from "components/Form/UploadForm/useUploadForm";
-import InputFileField from "components/Form/UploadForm/InputFileField";
-import * as S from "./UploadForm.style";
-import MultiPartForm from "components/Form/UploadForm/MultiPartForm";
+import SelectShippingMethod from "components/Form/EditForm/SelectShippingMethod";
+import useEditForm from "components/Form/EditForm/useEditForm";
+import InputFileField from "components/Form/EditForm/InputFileField";
+import * as S from "./EditForm.style";
+import MultiPartForm from "components/Form/EditForm/MultiPartForm";
 
-export default function UploadForm() {
-  const { onSubmit } = useUploadForm();
+export default function EditForm() {
+  const { onSubmit } = useEditForm();
 
   return (
-    <MultiPartForm onSubmit={onSubmit} className="uploadForm">
+    <MultiPartForm onSubmit={onSubmit} className="editForm">
       <S.InfoWrapper>
         <S.ImgContainer>
           <span>상품 이미지</span>
@@ -23,7 +23,7 @@ export default function UploadForm() {
             <InputField
               name={"product_name"}
               type={"text"}
-              className={"uploadForm product_name"}
+              className={"editForm product_name"}
             />
             <ValidationMessage name={"product_name"} />
           </div>
