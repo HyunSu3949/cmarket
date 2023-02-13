@@ -6,8 +6,15 @@ import { useContext } from "react";
 import { AuthContext } from "lib/auth/AuthProvider/AuthProvider";
 import logo from "assets/images/Logo-hodu.png";
 import * as S from "./LoginPage.style";
+import useDocumentTitle from "components/hooks/useDocumentTitle";
 
 export default function LoginPage() {
+  useDocumentTitle({
+    title: "로그인-호두마켓",
+    focusNodeSelector: "main",
+    focusNodeTitle: "로그인 화면",
+  });
+
   const navigate = useNavigate();
   const { isLogedIn } = useContext(AuthContext);
   if (isLogedIn) {

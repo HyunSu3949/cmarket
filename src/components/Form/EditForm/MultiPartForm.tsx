@@ -2,8 +2,28 @@ import { useContext, ReactNode } from "react";
 import { FormContext } from "components/Form/FormCommon/FormProvider";
 import styled from "styled-components";
 
+type Values = {
+  product_name: string;
+  image: File;
+  price: string;
+  shipping_method: string;
+  shipping_fee: string;
+  stock: string;
+  product_info: string;
+  product_id: string;
+};
+
+type Object = {
+  canSubmit: () => boolean;
+  values: Values;
+};
+
+type OnSubmitProps = {
+  formData: FormData;
+  product_id: number;
+};
 type FormProps = {
-  onSubmit: (values: any) => Promise<void>;
+  onSubmit: (values: OnSubmitProps) => Promise<void>;
   children: ReactNode;
   className: string;
 };
@@ -13,32 +33,22 @@ export default function MultiPartForm({
   children,
   className,
 }: FormProps) {
-  const { canSubmit, values }: any = useContext(FormContext);
+  const { canSubmit, values }: Object = useContext(FormContext);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const {
-      product_name,
-      image,
-      price,
-      shipping_method,
-      shipping_fee,
-      stock,
-      product_info,
-      product_id,
-    } = values;
 
     const formData = new FormData();
-    formData.append("image", image);
-    formData.append("product_name", product_name);
-    formData.append("price", price);
-    formData.append("shipping_method", shipping_method);
-    formData.append("shipping_fee", shipping_fee);
-    formData.append("stock", stock);
-    formData.append("product_info", product_info);
+
+    Object.entries(values).forEach((value) =>
+      formData.append(value[0], value[1])
+    );
+
     if (canSubmit()) {
       return;
     } else {
+      const { product_id: id } = values;
+      const product_id = +id;
       onSubmit({ formData, product_id });
     }
   };

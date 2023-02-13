@@ -1,6 +1,6 @@
 import React from "react";
 import OrderProducts from "components/Payment/OrderProduct/OrderProduct";
-import useCart from "components/Cart/useCart";
+import useCart from "components/Cart/hooks/useCart";
 import * as S from "./OrderProductList.styled";
 
 export default function OrderProductList() {

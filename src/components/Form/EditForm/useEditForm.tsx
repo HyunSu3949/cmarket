@@ -2,17 +2,12 @@ import { axiosInstanceMultiForm } from "lib/axiosInstance";
 import { useMutation } from "react-query";
 import { queryClient } from "lib/react-query/queryClient";
 
-type UploadInfo = {
+type OnSubmitProps = {
+  formData: FormData;
   product_id: number;
-  product_name: string;
-  price: number;
-  shipping_method: string;
-  shipping_fee: number;
-  stock: number;
-  products_info: string;
 };
 
-async function editProduct(values: any) {
+async function editProduct(values: OnSubmitProps) {
   const { formData, product_id } = values;
 
   return axiosInstanceMultiForm.put(`/products/${product_id}/`, formData);
@@ -20,13 +15,13 @@ async function editProduct(values: any) {
 
 export default function useEditForm() {
   const { mutate: editMutate } = useMutation(
-    (values: UploadInfo) => editProduct(values),
+    (values: OnSubmitProps) => editProduct(values),
     {
       onSuccess: () => queryClient.invalidateQueries(["sellerProducts"]),
     }
   );
 
-  const onSubmit = async (values: UploadInfo) => {
+  const onSubmit = async (values: OnSubmitProps) => {
     editMutate(values);
   };
   return {

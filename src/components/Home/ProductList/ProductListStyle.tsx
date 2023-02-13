@@ -1,19 +1,29 @@
 import styled from "styled-components";
 
+export const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: fit-content;
+  margin: 0 auto;
+`;
+
 export const List = styled.ul`
   display: flex;
   flex-wrap: wrap;
-`;
-
-export const ItemGrid = styled.section`
-  width: fit-content;
   display: grid;
   grid-template-columns: repeat(3, 380px);
   gap: 70px;
+`;
+
+export const ItemGrid = styled.section`
   margin: 0 auto;
 `;
 
 export const PaginationWrapper = styled.div`
+  width: fit-content;
+  margin: 0 auto;
   .pagination {
     display: flex;
     justify-content: center;

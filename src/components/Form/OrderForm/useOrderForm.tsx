@@ -1,6 +1,6 @@
 import axiosInstance from "lib/axiosInstance";
 import { useMutation } from "react-query";
-import useCart from "components/Cart/useCart";
+import useCart from "components/Cart/hooks/useCart";
 import { queryClient } from "lib/react-query/queryClient";
 
 async function orderProduct(orderInfo: any) {

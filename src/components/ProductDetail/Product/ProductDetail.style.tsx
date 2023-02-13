@@ -57,41 +57,41 @@ export const Method_Fee = styled.span`
   margin-bottom: 20px;
 `;
 
-export const QuantityBtn = styled.div`
+export const QuantityBtnContainer = styled.div`
   display: flex;
   width: 630px;
   height: 110px;
   border-top: 2px solid #c4c4c4;
   border-bottom: 2px solid #c4c4c4;
   padding: 30px 0;
-  span {
-    display: flex;
-    width: 50px;
-    height: 50px;
-    border: 1px solid #c4c4c4;
-    justify-content: center;
-    align-items: center;
-    font-weight: 400;
-    font-size: 18px;
-    line-height: 23px;
-  }
-  button {
-    width: 50px;
-    height: 50px;
-    border: 1px solid #c4c4c4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-  }
-  button:first-child {
+`;
+
+export const QuantityBtn = styled.button`
+  width: 50px;
+  height: 50px;
+  border: 1px solid #c4c4c4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  :first-child {
     border-radius: 5px 0 0 5px;
   }
-  button:last-child {
+  :last-child {
     border-radius: 0 5px 5px 0;
   }
 `;
-
+export const Quantity = styled.span`
+  display: flex;
+  width: 50px;
+  height: 50px;
+  border: 1px solid #c4c4c4;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 23px;
+`;
 export const PlusIcon = styled(plusIcon)``;
 export const MinusIcon = styled(minusIcon)``;
 

@@ -6,8 +6,15 @@ import SellerSignUpForm from "components/Form/SignUpForm/Seller/SellerSignUpForm
 import * as S from "./SignUpPage.style";
 import logo from "assets/images/Logo-hodu.png";
 import { Link } from "react-router-dom";
+import useDocumentTitle from "components/hooks/useDocumentTitle";
 
 export default function SignUpPage() {
+  useDocumentTitle({
+    title: "회원가입 - 호두마켓",
+    focusNodeSelector: "main",
+    focusNodeTitle: "호두마켓 회원가입 화면",
+  });
+
   const [type, setType] = useState("BUYER");
 
   const initialValues_buyer = {

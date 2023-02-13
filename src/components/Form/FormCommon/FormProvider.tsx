@@ -1,10 +1,10 @@
 import { createContext } from "react";
 import useForm from "components/Form/hooks/useForm";
 
-export const FormContext = createContext({});
+export const FormContext = createContext<any>({});
 
 type Props = {
-  children: React.ReactElement;
+  children: React.ReactNode;
   validate: (name: string, value: string | number) => string;
   initialValues: { [key: string]: string | number | null };
 };

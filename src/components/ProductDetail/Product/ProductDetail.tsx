@@ -1,8 +1,8 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import useProductDetail from "components/hooks/useProductDetailPage";
 import AddCartButton from "components/ProductDetail/AddCartButton/AddCartButton";
-import * as S from "./ProductDetailStyle";
+import * as S from "./ProductDetail.style";
+import Loading from "components/common/Loading/Loading";
 
 export default function ProductDetail({
   product_id,
@@ -55,18 +55,18 @@ export default function ProductDetail({
         <S.Method_Fee>
           {method} / {fee}
         </S.Method_Fee>
-        <S.QuantityBtn>
-          <button
+        <S.QuantityBtnContainer>
+          <S.QuantityBtn
             onClick={() => setQuantity((prev) => prev - 1)}
             disabled={quantity <= 1}
           >
             <S.MinusIcon />
-          </button>
-          <span>{quantity}</span>
-          <button onClick={() => setQuantity((prev) => prev + 1)}>
+          </S.QuantityBtn>
+          <S.Quantity>{quantity}</S.Quantity>
+          <S.QuantityBtn onClick={() => setQuantity((prev) => prev + 1)}>
             <S.PlusIcon />
-          </button>
-        </S.QuantityBtn>
+          </S.QuantityBtn>
+        </S.QuantityBtnContainer>
         <S.PriceContainer>
           <span className="totalword">총 상품금액</span>
           <div>
@@ -88,6 +88,7 @@ export default function ProductDetail({
           </AddCartButton>
         </S.BtnContainer>
       </div>
+      <Loading />
     </S.Wrapper>
   );
 }

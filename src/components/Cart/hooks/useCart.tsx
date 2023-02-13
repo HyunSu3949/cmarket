@@ -2,20 +2,22 @@ import axiosInstance from "lib/axiosInstance";
 import { useQuery, useMutation, useQueries } from "react-query";
 import { queryClient } from "lib/react-query/queryClient";
 
-async function getCartList() {
-  const result = await axiosInstance.get(`/cart/`);
-  return result;
-}
-
 type EditInfo = {
   product_id: number;
   quantity: number;
   is_active: boolean; // 장바구니 내 상품 활성화 버튼, 같이 보내지 않으면 False
 };
+
 type EditProps = {
   cart_item_id: number;
   editInfo: EditInfo;
 };
+
+async function getCartList() {
+  const result = await axiosInstance.get(`/cart/`);
+  return result;
+}
+
 async function editCartItem({ cart_item_id, editInfo }: EditProps) {
   const result = await axiosInstance.put(`/cart/${cart_item_id}/`, editInfo);
   return result;
@@ -66,7 +68,6 @@ export default function useCart() {
       return acc;
     }, []);
   }
-  //장바구니의 총 가격
   let total_price = 0;
   let total_product_price = 0;
   let total_shipping_fee = 0;

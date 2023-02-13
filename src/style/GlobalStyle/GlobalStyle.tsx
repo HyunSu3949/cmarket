@@ -69,6 +69,7 @@ a {
 
 button {
   all: unset;
+  cursor: pointer;
 }
 
 input {

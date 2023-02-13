@@ -1,7 +1,6 @@
 import React from "react";
-import useCart from "components/Cart/useCart";
+import useCart from "components/Cart/hooks/useCart";
 import CartProduct from "components/Cart/CartProduct/CartProduct";
-import { useNavigate, Link } from "react-router-dom";
 import { toLocaleString } from "components/Form/utils/toLocaleString";
 import * as S from "./CartList.style";
 
@@ -27,6 +26,19 @@ export default function CartList() {
     total_product_price,
   } = useCart();
 
+  if (!combinedCartInfoList.length) {
+    return (
+      <S.Wrapper>
+        <S.H2>장바구니</S.H2>
+        <S.TitleInfo>
+          <span>상품정보</span>
+          <span>수량</span>
+          <span>상품금액</span>
+        </S.TitleInfo>
+        <S.NoProduct>장바구니에 담긴 물건이 없습니다.</S.NoProduct>
+      </S.Wrapper>
+    );
+  }
   return (
     <S.Wrapper>
       <S.H2>장바구니</S.H2>

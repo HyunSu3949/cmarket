@@ -1,6 +1,6 @@
-import useCart from "components/Cart/useCart";
-import * as S from "./OrderProduct.style";
+import useCart from "components/Cart/hooks/useCart";
 import { toLocaleString } from "components/Form/utils/toLocaleString";
+import * as S from "./OrderProduct.style";
 
 type Props = {
   product_id: number;

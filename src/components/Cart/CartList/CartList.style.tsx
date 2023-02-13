@@ -141,3 +141,15 @@ export const LinkBtn = styled(Link)`
 
 export const PlusIcon = styled(plusIcon)``;
 export const MinusIcon = styled(minusIcon)``;
+
+export const NoProduct = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #f2f2f2;
+
+  width: 100%;
+  height: 100px;
+
+  margin-top: 10px;
+`;

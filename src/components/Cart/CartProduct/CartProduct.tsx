@@ -1,4 +1,4 @@
-import useCart from "components/Cart/useCart";
+import useCart from "components/Cart/hooks/useCart";
 import useModals from "components/modal/hooks/useModals";
 import { modals } from "components/modal/Modals";
 import { Link } from "react-router-dom";

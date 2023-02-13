@@ -1,9 +1,15 @@
 import SellerProductList from "components/Seller/ProductList/SellerProductList";
 import { useState } from "react";
+import useDocumentTitle from "components/hooks/useDocumentTitle";
 
 import * as S from "./SellerPage.styled";
 
 export default function SellerPage() {
+  useDocumentTitle({
+    title: "판매자 페이지 - 호두마켓",
+    focusNodeSelector: "main",
+    focusNodeTitle: "호두마켓 판매자 페이지 화면",
+  });
   const [selectedButton, setSelectedButton] = useState<number | undefined>(1);
 
   return (

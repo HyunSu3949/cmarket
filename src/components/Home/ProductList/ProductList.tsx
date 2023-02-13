@@ -1,19 +1,22 @@
 import useProductList from "components/Home/ProductList/useProductList";
 import Product from "components/Home/Product/Product";
-import * as S from "./ProductListStyle";
 import Pagination from "react-js-pagination";
+import Loading from "components/common/Loading/Loading";
+import * as S from "./ProductListStyle";
 
 export default function ProductList() {
   const { productList, currentPage, setPageNumber, totalCount } =
     useProductList();
   return (
-    <>
+    <S.Wrapper>
+      <Loading />
       <S.ItemGrid>
-        {productList.map((item: any) => (
-          <Product key={item.product_id} {...item} />
-        ))}
+        <S.List>
+          {productList.map((item: any) => (
+            <Product key={item.product_id} {...item} />
+          ))}
+        </S.List>
       </S.ItemGrid>
-
       <S.PaginationWrapper>
         <Pagination
           activePage={currentPage} // 현재 페이지
@@ -25,6 +28,6 @@ export default function ProductList() {
           onChange={(pageNumber) => setPageNumber(pageNumber)} // 페이지 변경을 핸들링하는 함수
         />
       </S.PaginationWrapper>
-    </>
+    </S.Wrapper>
   );
 }

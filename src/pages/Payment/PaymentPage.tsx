@@ -5,9 +5,10 @@ import { orderValidate } from "components/Form/utils/formValidation";
 import OrderProductList from "components/Payment/OrderProductList/OrderProductList";
 import OrderProduct from "components/Payment/OrderProduct/OrderProduct";
 import DirectOrderProduct from "components/Payment/DirectOrderProduct/DirectOrderProduct";
-import useCart from "components/Cart/useCart";
+import useCart from "components/Cart/hooks/useCart";
 import * as S from "./PaymentPage.style";
 import { toLocaleString } from "components/Form/utils/toLocaleString";
+import useDocumentTitle from "components/hooks/useDocumentTitle";
 
 type Props = {
   order_kind: "cart_order" | "cart_one_order" | "direct_order";
@@ -18,6 +19,12 @@ type Props = {
 };
 
 export default function PaymentPage() {
+  useDocumentTitle({
+    title: "주문하기 - 호두마켓",
+    focusNodeSelector: "main",
+    focusNodeTitle: "호두마켓 주문하기 화면",
+  });
+
   const location = useLocation();
   const props = location.state;
   const { order_kind, product_id, quantity, price, shipping_fee }: Props =
