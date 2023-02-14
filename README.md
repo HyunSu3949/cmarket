@@ -2,8 +2,13 @@
 
 ## <span id='1'>1. 서비스 소개</span>
 
-***C-MARKET***는 캠핑 용품을 사고 파는 `온라인 마켓`입니다.
+***C-MARKET***는 유저들이 물건을 사고 파는 `온라인 마켓`입니다.  
 
+🔗 *배포 URL*: https://c-market.vercel.app/<br>
+🏕  *체험계정*:     
+구매자 계정 ID `cmarket1` /  PW`cmarket1`  
+판매자 계정 ID `cmarket2` /  PW`cmarket2`  
+               
 ## <span id='3'>2. 개발 기간</span>
 `23/01/29 -`
 
@@ -33,5 +38,18 @@
 
 - 배포: Vercel
 
-## <span id='12'>5. 트러블슈팅</span>
+## <span id='12'>5. 프로젝트를 진행하며</span>  
+
+react-query 사용 후기
+
+localstorage 토큰 문제
+
+useForm custom hook 도입
+
+useDocumentTitle 도입
+
+loading 화면 관리
+
+
+
 
