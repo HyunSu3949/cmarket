@@ -2,14 +2,13 @@ import InputField from "components/Form/FormCommon/InputField";
 import ValidationMessage from "components/Form/FormCommon/ValidationMessage";
 import SubmitBtn from "components/Form/FormCommon/SubmitBtn";
 import SelectShippingMethod from "components/Form/UploadForm/SelectShippingMethod";
-import useUploadForm from "components/Form/UploadForm/useUploadForm";
+import useUploadForm from "components/Form/UploadForm/hooks/useUploadForm";
 import InputFileField from "components/Form/UploadForm/InputFileField";
 import * as S from "./UploadForm.style";
 import MultiPartForm from "components/Form/UploadForm/MultiPartForm";
 
 export default function UploadForm() {
   const { onSubmit } = useUploadForm();
-
   return (
     <MultiPartForm onSubmit={onSubmit} className="uploadForm">
       <S.InfoWrapper>

@@ -1,10 +1,15 @@
 import { useContext } from "react";
 import { FormContext } from "./FormProvider";
-import * as S from "./ValidationMessage.style";
+import styled from "styled-components";
+
 export default function ValidationMessage({ name }: { name: string }) {
   const { touched, errors }: any = useContext(FormContext);
   if (!touched[name] || !errors[name]) {
     return null;
   }
-  return <S.Span>{errors[name]}</S.Span>;
+  return <Span>{errors[name]}</Span>;
 }
+
+export const Span = styled.span`
+  color: red;
+`;

@@ -1,7 +1,7 @@
 import { useContext, useState, useEffect } from "react";
 import { FormContext } from "../FormCommon/FormProvider";
-import * as S from "./MsgFromServer.style";
 import Loading from "components/common/Loading/Loading";
+import styled from "styled-components";
 
 type Props = {
   type: string;
@@ -11,7 +11,7 @@ type Props = {
 };
 
 export default function MsgFromServer({ type, msgFromServer }: Props) {
-  const { errors, values }: any = useContext(FormContext);
+  const { errors, values } = useContext(FormContext);
   const validateError = errors[type];
   const [checkMsg, setCheckMsg] = useState("");
 
@@ -21,15 +21,26 @@ export default function MsgFromServer({ type, msgFromServer }: Props) {
 
   useEffect(() => {
     setCheckMsg("");
-  }, [values]);
+  }, [values[type]]);
+
   return (
     <>
       <Loading />
       {validateError === "" && (
-        <S.ServerMsg passed={msgFromServer[type].status}>
-          {checkMsg}
-        </S.ServerMsg>
+        <ServerMsg passed={msgFromServer[type].status}>{checkMsg}</ServerMsg>
       )}
     </>
   );
 }
+
+type MsgProps = {
+  passed?: boolean;
+};
+export const ServerMsg = styled.span`
+  color: red;
+  ${(props: MsgProps) =>
+    props.passed &&
+    `
+      color: #21BF48;
+  `}
+`;

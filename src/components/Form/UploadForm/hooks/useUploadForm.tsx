@@ -12,7 +12,8 @@ type UploadInfo = {
 };
 
 async function uploadProduct(uploadInfo: UploadInfo) {
-  return axiosInstanceMultiForm.post("/products/", uploadInfo);
+  const result = axiosInstanceMultiForm.post("/products/", uploadInfo);
+  return result;
 }
 
 export default function useUploadForm() {
@@ -21,7 +22,6 @@ export default function useUploadForm() {
   );
 
   const onSubmit = async (values: UploadInfo) => {
-    console.log(values);
     uploadMutate(values);
   };
   return {

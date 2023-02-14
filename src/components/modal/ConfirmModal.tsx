@@ -1,6 +1,7 @@
 import ReactModal from "react-modal";
 import styled from "styled-components";
 import "./modal.css";
+
 export default function ConfirmModal({ onClose, text }: any) {
   const handleClose = () => {
     onClose();

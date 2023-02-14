@@ -5,7 +5,7 @@ import { queryClient } from "lib/react-query/queryClient";
 type EditInfo = {
   product_id: number;
   quantity: number;
-  is_active: boolean; // 장바구니 내 상품 활성화 버튼, 같이 보내지 않으면 False
+  is_active: boolean;
 };
 
 type EditProps = {
@@ -13,6 +13,7 @@ type EditProps = {
   editInfo: EditInfo;
 };
 
+type Item = {};
 async function getCartList() {
   const result = await axiosInstance.get(`/cart/`);
   return result;

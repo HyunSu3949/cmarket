@@ -3,7 +3,7 @@ import { FormContext } from "components/Form/FormCommon/FormProvider";
 import styled from "styled-components";
 
 export default function SelectShippingMethod() {
-  const { values, setValues }: any = useContext(FormContext);
+  const { values, setValues } = useContext(FormContext);
   const [clicked, setClicked] = useState("PAECEL");
 
   const handleChange = (e: React.MouseEvent<HTMLButtonElement>) => {

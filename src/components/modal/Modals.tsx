@@ -1,5 +1,4 @@
-import React, { useContext, Component } from "react";
-import styled from "styled-components";
+import { useContext } from "react";
 
 import QuantityEditModal from "components/modal/QuantityEditModal";
 import MyModal from "components/modal/MyModal";
@@ -32,7 +31,3 @@ export default function Modals() {
     </>
   );
 }
-
-const StyledBlock = styled.div`
-  background-color: rgba(0, 0, 0, 0.2);
-`;

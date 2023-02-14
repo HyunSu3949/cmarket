@@ -9,7 +9,7 @@ type FormProps = {
 };
 
 export default function Form({ onSubmit, children, className }: FormProps) {
-  const { canSubmit, values }: any = useContext(FormContext);
+  const { canSubmit, values } = useContext(FormContext);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();

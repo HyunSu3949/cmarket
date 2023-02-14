@@ -1,7 +1,7 @@
 import * as S from "./ProductStyle";
 import { useNavigate } from "react-router-dom";
 
-type props = {
+type Props = {
   product_id: number;
   product_name: string;
   seller: number;
@@ -14,13 +14,9 @@ type props = {
   products_info: string;
 };
 
-export default function Product({
-  product_id,
-  store_name,
-  product_name,
-  image,
-  price,
-}: props) {
+export default function Product(props: Props) {
+  const { image, store_name, product_name, price, product_id } = props;
+
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(`/productdetail/${product_id}`);

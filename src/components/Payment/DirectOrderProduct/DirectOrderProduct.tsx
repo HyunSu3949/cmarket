@@ -10,9 +10,11 @@ type Props = {
 export default function DirectOrderProduct({ product_id, quantity }: Props) {
   const { productData } = useProductDetail({ product_id });
   const { image, price, store_name, product_name, shipping_fee } = productData;
+
   const totalPrice = price * quantity + shipping_fee;
   const fee =
     shipping_fee === 0 ? "무료배송" : toLocaleString(shipping_fee) + "원";
+
   return (
     <S.Wrapper>
       <S.Img src={image} alt="" style={{ width: "100px", height: "100px" }} />

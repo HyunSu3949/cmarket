@@ -3,11 +3,15 @@ import { FormContext } from "components/Form/FormCommon/FormProvider";
 import imgIcon from "assets/images/icon-img.png";
 import * as S from "./InputFileField.style";
 
-export default function InputFileField(props: any) {
+type InputFileFieldProps = {
+  name: string;
+};
+export default function InputFileField({ name }: InputFileFieldProps) {
   const inputRef = useRef<HTMLInputElement>(null);
-  const { inputFieldProps, setValues }: any = useContext(FormContext);
-  const { onBlur } = inputFieldProps(props.name);
   const [currentImg, setCurrentImg] = useState("");
+
+  const { inputFieldProps, setValues } = useContext(FormContext);
+  const { onBlur } = inputFieldProps(name);
 
   const handleUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -26,7 +30,7 @@ export default function InputFileField(props: any) {
         <S.Input
           id="input"
           type="file"
-          name={props.name}
+          name={name}
           onBlur={onBlur}
           onChange={handleUpload}
           accept="image/*,audio/*,video/mp4,video/x-m4v,application/pdf,application/vnd.ms-excel,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet,application/vnd.ms-powerpoint,application/vnd.openxmlformats-officedocument.presentationml.presentation,.csv"

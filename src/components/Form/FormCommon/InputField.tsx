@@ -9,7 +9,7 @@ type Props = {
 };
 
 export default function InputField(props: Props) {
-  const { inputFieldProps }: any = useContext(FormContext);
+  const { inputFieldProps } = useContext(FormContext);
   const { value, onBlur, onChange } = inputFieldProps(props.name);
 
   return (
