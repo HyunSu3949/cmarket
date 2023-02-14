@@ -1,46 +1,55 @@
-# Getting Started with Create React App
+# C-MARKET :: 캠퍼들의 오픈마켓
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## <span id='1'>1. 서비스 소개</span>
 
-## Available Scripts
+***C-MARKET***는 유저들이 물건을 사고 파는 `온라인 마켓`입니다.  
 
-In the project directory, you can run:
+🔗 *배포 URL*: https://c-market.vercel.app/<br>
+🏕  *체험계정*:     
+구매자 계정 ID `cmarket1` /  PW`cmarket1`  
+판매자 계정 ID `cmarket2` /  PW`cmarket2`  
+               
+## <span id='3'>2. 개발 기간</span>
+`23/01/29 -`
 
-### `npm start`
+## <span id='4'>3. 프로젝트 목표</span>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### 1. ***typescript*** 사용으로 버그를 사전에 제거 하여 생산성 증대.  
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+  사소한 타입 문제로 오랜 시간 버그를 수정하는데 시간 들였던 경험이 있습니다. 타입을 사전에 지정하면 이러한 에러를 미리 방지하여 생산성을 높일 수 있을것 같다는 생각에 타입스크립트를 사용하기로 했습니다.  
+  
+### 2. ***React-Query*** 로 비동기 통신 처리하기  
 
-### `npm test`
+  프로젝트를 진행하며 클라이언트와 서버의 상태 값을 일치시키는 로직을 처리하는것이 까다로웠습니다. 리액트 쿼리를 사용하여 이 문제를 해결하여 간단하고 직관적인 로직을 만들어 보고자 했습니다.  
+  
+### 3. ***view*** 와 ***business logic*** 분리하여 코드 작성하기  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+  Custom Hook Pattern 을 사용하여  view 와 business logic 분리하고자 했습니다. hook에서는 비지지스 로직을 처리하며 view 컴포넌트에서는 data를 보여주는 패턴을 적용시키려 했습니다.
+  
+## <span id='7'>4. 개발 환경</span>
 
-### `npm run build`
+<img src='https://img.shields.io/badge/react-61DAFB?style=for-the-badge&logo=react&logoColor=black'> <img src="https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badg&logo=TypeScript&logoColor=white"> <img src='https://img.shields.io/badge/styled-components-DB7093?style=for-the-badge&logo=styled-components&logoColor=black'>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- 개발: 
+    * FE: React / Typescript / Styled Components / React-Query
+    * BE: 제공된 API 사용
+  
+- 디자인: 제공된 디자인 사용
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- 배포: Vercel
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## <span id='12'>5. 프로젝트를 진행하며</span>  
 
-### `npm run eject`
+react-query 사용 후기
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+localstorage 토큰 문제
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+useForm custom hook 도입
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+useDocumentTitle 도입
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+loading 화면 관리
 
-## Learn More
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+
