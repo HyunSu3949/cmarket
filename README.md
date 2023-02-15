@@ -39,16 +39,14 @@
 - 배포: Vercel
 
 ## <span id='12'>5. 프로젝트를 진행하며</span>  
+### TypeScript 도입
+이번 프로젝트에서는 TypeScript 의 여러 기능중 타입 선언만 사용했습니다. 변수, 함수의 return 값, 컴포넌트의 Props 의 타입을 생각하며 코드를 작성하니 사소한 에러로 인한 시간낭비를 줄일 수 있었습니다. 또한 그간 자연스럽게 사용하던 JavaSciprt 내장 method, React 내장 Hook 등에 type을 확인하며 적절한 사용 방법에 대한 고민을 하게 되었습니다.
+### React query 사용  
+이전 프로젝트에서는 비동기 통신 요청 후 then 메서드를 통해 클라이언트 데이터를 갱신하는 과정을 거쳐야 했습니다. 리액트 쿼리 도입 후 서버측에서 변경된 상태를 클라이언트측에 곧바로 보이는 과정을 간단히 처리할 수 있었습니다. 또한 prefetch, useIsFetching 와 같은 유용한 기능들이 내장되어 있어 UX 향상에 용이하게 사용할 수 있었습니다.다만 리액트 쿼리가 갖는 유용한 기능들이 어떤 과정에 의해 일어나는지 추가 학습이 필요해 보입니다.
 
-react-query 사용 후기
+### localstorage에 저장된 토큰 보안 문제  
+localstorage에 토큰을 저장해 놓고 사용하게 되면 XSS(Cross Site Scripting) 공격에 취약하다는 것을 알게 되었습니다. 해결 방법으로는 refresh token을 httpOnly 쿠키로 설정하고 url이 새로고침 될 때마다 refresh token을 request에 담아 새로운 token을 발급 받습니다. 이렇게 발급 받은 token을 private variable에 저장하는 방식입니다. 다만 제공된 api 명세서에 refresh token 에 대한 내용이 없었습니다. 다음 프로젝트를 진행시 jwt 인증 방식을 사용한다면 백엔드 개발자와 소통하여 이러한 방법을 사용해볼 생각입니다.
 
-localstorage 토큰 문제
-
-useForm custom hook 도입
-
-useDocumentTitle 도입
-
-loading 화면 관리
 
 
 
