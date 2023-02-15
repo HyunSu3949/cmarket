@@ -1,7 +1,7 @@
 import FormProvider from "components/Form/FormCommon/FormProvider";
 import UploadForm from "components/Form/UploadForm/UploadForm";
 import { uploadValidate } from "components/Form/utils/formValidation";
-import useDocumentTitle from "components/hooks/useDocumentTitle";
+import useDocumentTitle from "pages/hooks/useDocumentTitle";
 
 export default function UploadProduct() {
   useDocumentTitle({

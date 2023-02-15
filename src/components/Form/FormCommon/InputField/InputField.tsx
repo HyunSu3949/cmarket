@@ -1,11 +1,12 @@
 import { useContext } from "react";
-import { FormContext } from "./FormProvider";
+import { FormContext } from "../FormProvider";
 import * as S from "./InputField.style";
 
 type Props = {
   type: string;
   name: string;
   className?: string;
+  placeholder?: string;
 };
 
 export default function InputField(props: Props) {
@@ -20,6 +21,7 @@ export default function InputField(props: Props) {
       onBlur={onBlur}
       onChange={onChange}
       className={props.className}
+      placeholder={props.placeholder}
     />
   );
 }

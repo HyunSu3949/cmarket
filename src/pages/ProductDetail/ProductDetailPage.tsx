@@ -1,6 +1,6 @@
 import ProductDetail from "components/ProductDetail/Product/ProductDetail";
 import { useParams } from "react-router-dom";
-import useDocumentTitle from "components/hooks/useDocumentTitle";
+import useDocumentTitle from "pages/hooks/useDocumentTitle";
 
 export default function ProductDetailPage() {
   const { product_id } = useParams();

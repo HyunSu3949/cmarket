@@ -15,6 +15,7 @@ const InputLogin = css`
       border: none;
       border-bottom: 1px solid #C4C4C4;
       margin: 0 auto;
+      input::placeholder
 `}
   ${(props: Props) =>
     props.className?.includes("loginForm username") &&

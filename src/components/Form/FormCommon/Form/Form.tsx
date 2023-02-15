@@ -1,5 +1,5 @@
 import { useContext, ReactNode } from "react";
-import { FormContext } from "./FormProvider";
+import { FormContext } from "../FormProvider";
 import * as S from "./Form.style";
 
 type FormProps = {

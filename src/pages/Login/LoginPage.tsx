@@ -6,7 +6,7 @@ import { useContext } from "react";
 import { AuthContext } from "lib/auth/AuthProvider/AuthProvider";
 import logo from "assets/images/Logo-hodu.png";
 import * as S from "./LoginPage.style";
-import useDocumentTitle from "components/hooks/useDocumentTitle";
+import useDocumentTitle from "pages/hooks/useDocumentTitle";
 
 export default function LoginPage() {
   useDocumentTitle({
@@ -16,14 +16,20 @@ export default function LoginPage() {
   });
 
   const navigate = useNavigate();
-  const { isLogedIn } = useContext(AuthContext);
+  const { isLogedIn, loginType } = useContext(AuthContext);
   if (isLogedIn) {
     navigate("/");
   }
-  const initialValues = {
-    username: "",
-    password: "",
-  };
+  const initialValues =
+    loginType === "BUYER"
+      ? {
+          username: "cmarket1",
+          password: "cmarket1",
+        }
+      : {
+          username: "cmarket2",
+          password: "cmarket2",
+        };
   const validate = loginValidate;
 
   return (

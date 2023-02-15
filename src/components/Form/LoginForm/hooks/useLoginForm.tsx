@@ -23,9 +23,9 @@ export default function useLoginForm() {
     (userInfo: UserInfo) => login(userInfo),
     {
       onSuccess: (data) => {
-        const token = data.data.token;
+        const { token, user_type } = data.data;
         localStorage.setItem("token", token);
-        localStorage.setItem("login_type", loginType);
+        localStorage.setItem("login_type", user_type);
         setIsLogedIn(true);
         navigate("/", { replace: true });
       },

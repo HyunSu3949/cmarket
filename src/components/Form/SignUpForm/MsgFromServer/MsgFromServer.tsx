@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from "react";
-import { FormContext } from "../FormCommon/FormProvider";
+import { FormContext } from "../../FormCommon/FormProvider";
 import Loading from "components/common/Loading/Loading";
 import styled from "styled-components";
 
@@ -25,7 +25,7 @@ export default function MsgFromServer({ type, msgFromServer }: Props) {
 
   return (
     <>
-      <Loading />
+      <Loading className="form" />
       {validateError === "" && (
         <ServerMsg passed={msgFromServer[type].status}>{checkMsg}</ServerMsg>
       )}

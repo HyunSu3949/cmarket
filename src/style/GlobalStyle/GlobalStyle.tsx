@@ -76,6 +76,8 @@ input {
   outline: none;
   
 }
-
+input::placeholder {
+  font-size: 14px;
+}
 `;
 export default GlobalStyles;

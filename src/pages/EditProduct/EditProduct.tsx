@@ -2,7 +2,7 @@ import FormProvider from "components/Form/FormCommon/FormProvider";
 import EditForm from "components/Form/EditForm/EditForm";
 import { uploadValidate } from "components/Form/utils/formValidation";
 import { useLocation } from "react-router-dom";
-import useDocumentTitle from "components/hooks/useDocumentTitle";
+import useDocumentTitle from "pages/hooks/useDocumentTitle";
 
 export default function EditProduct() {
   useDocumentTitle({

@@ -1,4 +1,4 @@
-import useProductList from "components/Home/ProductList/useProductList";
+import useProductList from "components/Home/ProductList/hooks/useProductList";
 import Product from "components/Home/Product/Product";
 import Pagination from "react-js-pagination";
 import Loading from "components/common/Loading/Loading";

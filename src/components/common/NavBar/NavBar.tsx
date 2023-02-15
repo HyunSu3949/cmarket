@@ -15,6 +15,7 @@ export default function NavBar() {
     openModal(modals.myModal, {
       onLogout: () => {
         handleLogout();
+        navigate("/");
       },
       goToOrderPage: () => {
         navigate("/myorder");

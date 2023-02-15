@@ -1,10 +1,9 @@
-import React from "react";
-import InputField from "components/Form/FormCommon/InputField";
-import ValidationMessage from "components/Form//FormCommon/ValidationMessage";
-import Form from "components/Form/FormCommon/Form";
-import useOrderForm from "./useOrderForm";
-import SelectPaymentType from "components/Form/OrderForm/SelectPaymentType";
-import SubmitConfrim from "components/Form/OrderForm/SubmitConfrim";
+import InputField from "components/Form/FormCommon/InputField/InputField";
+import ValidationMessage from "components/Form/FormCommon/ValidationMessage/ValidationMessage";
+import Form from "components/Form/FormCommon/Form/Form";
+import useOrderForm from "./hooks/useOrderForm";
+import SelectPaymentType from "components/Form/OrderForm/SelectPaymentType/SelectPaymentType";
+import SubmitConfrim from "components/Form/OrderForm/SubmitConfrim/SubmitConfrim";
 import * as S from "./OrderForm.style";
 
 type Props = {

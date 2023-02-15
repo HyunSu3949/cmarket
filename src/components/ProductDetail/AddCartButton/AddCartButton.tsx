@@ -53,5 +53,9 @@ export default function AddCartButton({ product_id, quantity }: any) {
       });
     }
   };
-  return <button onClick={handleClick}>장바구니</button>;
+  return (
+    <button onClick={handleClick} type="button">
+      장바구니
+    </button>
+  );
 }

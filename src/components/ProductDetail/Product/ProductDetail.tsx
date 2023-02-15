@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import useProductDetail from "components/hooks/useProductDetailPage";
+import useProductDetail from "pages/ProductDetail/hooks/useProductDetailPage";
 import AddCartButton from "components/ProductDetail/AddCartButton/AddCartButton";
 import * as S from "./ProductDetail.style";
 import Loading from "components/common/Loading/Loading";

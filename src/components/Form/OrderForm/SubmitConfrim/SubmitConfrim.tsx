@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import * as S from "./SubmitConfirm.style";
-import { toLocaleString } from "./../utils/toLocaleString";
+import { toLocaleString } from "components/Form/utils/toLocaleString";
 
 type Props = {
   order_kind: "cart_order" | "cart_one_order" | "direct_order";

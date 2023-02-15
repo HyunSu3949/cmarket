@@ -1,10 +1,10 @@
-import InputField from "components/Form/FormCommon/InputField";
-import ValidationMessage from "components/Form/FormCommon/ValidationMessage";
-import Form from "components/Form/FormCommon/Form";
-import MsgFromServer from "../MsgFromServer";
-import useSellerSignUpForm from "components/Form/SignUpForm/Seller/useSellerSignUpForm";
-import SubmitBtn from "components/Form/FormCommon/SubmitBtn";
-import ConfirmPassword from "components/Form/SignUpForm/ConfirmPassword";
+import InputField from "components/Form/FormCommon/InputField/InputField";
+import ValidationMessage from "components/Form/FormCommon/ValidationMessage/ValidationMessage";
+import Form from "components/Form/FormCommon/Form/Form";
+import MsgFromServer from "../MsgFromServer/MsgFromServer";
+import useSellerSignUpForm from "components/Form/SignUpForm/Seller/hooks/useSellerSignUpForm";
+import SubmitBtn from "components/Form/FormCommon/SubmitBtn/SubmitBtn";
+import ConfirmPassword from "components/Form/SignUpForm/ConfirmPassword/ConfirmPassword";
 import { useContext } from "react";
 import { FormContext } from "components/Form/FormCommon/FormProvider";
 import * as S from "./SellerSignUpFormStyle";
@@ -31,8 +31,8 @@ export default function SellerSignUpForm() {
     validateRegistNumberMutate(registNumberValue);
   };
 
-  const disabled_user = usernameError !== "";
-  const disabled_regi = registNumberError !== "";
+  const btn_disabled_user = usernameError !== "";
+  const btn_disabled_regi = registNumberError !== "";
 
   return (
     <Form onSubmit={onSubmit} className={"signup_seller"}>
@@ -43,11 +43,12 @@ export default function SellerSignUpForm() {
             name={"username"}
             type={"text"}
             className={"signup_seller username"}
+            placeholder={"아이디를 입력하세요"}
           />
           <S.CheckBtn
             type={"button"}
             onClick={usernameCheck}
-            disabled={disabled_user}
+            disabled={btn_disabled_user}
           >
             <span>중복확인</span>
           </S.CheckBtn>
@@ -59,6 +60,7 @@ export default function SellerSignUpForm() {
           name={"password"}
           type={"password"}
           className={"signup_seller password"}
+          placeholder={"비밀번호를 입력하세요"}
         />
         <ValidationMessage name={"password"} />
         <MsgFromServer type={"password"} msgFromServer={msgFromServer} />
@@ -67,6 +69,7 @@ export default function SellerSignUpForm() {
           name={"password2"}
           type={"password"}
           className={"signup_seller password"}
+          placeholder={"비밀번호를 다시 입력하세요"}
         />
         <ConfirmPassword />
         <span>이름</span>
@@ -74,6 +77,7 @@ export default function SellerSignUpForm() {
           name={"name"}
           type={"text"}
           className={"signup_seller name"}
+          placeholder={"이름을 입력하세요"}
         />
         <ValidationMessage name={"name"} />
         <span>휴대폰번호</span>
@@ -81,6 +85,7 @@ export default function SellerSignUpForm() {
           name={"phone_number"}
           type={"text"}
           className={"signup_seller phone_number"}
+          placeholder={"휴대폰번호를 숫자만 입력하세요"}
         />
         <ValidationMessage name={"phone_number"} />
         <MsgFromServer type={"phone_number"} msgFromServer={msgFromServer} />
@@ -90,11 +95,12 @@ export default function SellerSignUpForm() {
             name={"company_registration_number"}
             type={"text"}
             className={"signup_seller company_registration_number"}
+            placeholder={"사업자 등록번호 숫자 10자리를 입력하세요"}
           />
           <S.CheckBtn
             type={"button"}
             onClick={registNumberCheck}
-            disabled={disabled_regi}
+            disabled={btn_disabled_regi}
           >
             인증
           </S.CheckBtn>
@@ -109,6 +115,7 @@ export default function SellerSignUpForm() {
           name={"store_name"}
           type={"text"}
           className={"signup_seller store_name"}
+          placeholder={"스토어 이름을 입력하세요"}
         />
         <ValidationMessage name={"store_name"} />
         <MsgFromServer type={"store_name"} msgFromServer={msgFromServer} />

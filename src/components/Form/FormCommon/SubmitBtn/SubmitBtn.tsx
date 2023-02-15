@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { FormContext } from "./FormProvider";
+import { FormContext } from "../FormProvider";
 import * as S from "./SubmitBtn.style";
 
 type Props = {

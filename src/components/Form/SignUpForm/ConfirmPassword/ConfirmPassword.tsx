@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { FormContext } from "components/Form/FormCommon/FormProvider";
-import ValidationMessage from "components/Form/FormCommon/ValidationMessage";
+import ValidationMessage from "components/Form/FormCommon/ValidationMessage/ValidationMessage";
 
 export default function ConfirmPassword() {
   const { values, setErrors, touched, errors }: any = useContext(FormContext);

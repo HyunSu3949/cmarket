@@ -1,4 +1,4 @@
-import useProductDetail from "components/hooks/useProductDetailPage";
+import useProductDetail from "pages/ProductDetail/hooks/useProductDetailPage";
 import { toLocaleString } from "components/Form/utils/toLocaleString";
 import * as S from "./DirectOrderProduct.styled";
 
@@ -12,7 +12,7 @@ export default function DirectOrderProduct({ product_id, quantity }: Props) {
   const { image, price, store_name, product_name, shipping_fee } = productData;
 
   const totalPrice = price * quantity + shipping_fee;
-  const fee =
+  const shippingFee =
     shipping_fee === 0 ? "무료배송" : toLocaleString(shipping_fee) + "원";
 
   return (
@@ -24,7 +24,7 @@ export default function DirectOrderProduct({ product_id, quantity }: Props) {
         <span>수량: {quantity}개</span>
       </S.ProductInfoContainer>
       <S.DiscountContainer>-</S.DiscountContainer>
-      <S.ShippingFeeContainer>{fee}</S.ShippingFeeContainer>
+      <S.ShippingFeeContainer>{shippingFee}</S.ShippingFeeContainer>
       <S.TotalPriceContainer>
         <span>{toLocaleString(totalPrice)}원</span>
       </S.TotalPriceContainer>

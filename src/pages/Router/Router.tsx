@@ -11,7 +11,7 @@ import SellerPage from "pages/SellerPage/SellerPage";
 import EditProduct from "pages/EditProduct/EditProduct";
 import UploadProduct from "pages/UploadProduct.tsx/UploadProduct";
 import MyOrderPage from "pages/MyOrder/MyOrderPage";
-import NavbarLayout from "components/common/NavBar/NavbarLayout";
+import NavbarLayout from "components/common/Layout/NavbarLayout";
 
 export default function Router() {
   const { isLogedIn } = useContext(AuthContext);

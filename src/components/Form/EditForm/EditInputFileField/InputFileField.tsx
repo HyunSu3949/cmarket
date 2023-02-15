@@ -9,7 +9,7 @@ type InputFileFieldProps = {
 
 export default function InputFileField({ name }: InputFileFieldProps) {
   const inputRef = useRef<HTMLInputElement>(null);
-  const { inputFieldProps, setValues }: any = useContext(FormContext);
+  const { inputFieldProps, setValues } = useContext(FormContext);
   const { onBlur } = inputFieldProps(name);
   const [currentImg, setCurrentImg] = useState("");
 

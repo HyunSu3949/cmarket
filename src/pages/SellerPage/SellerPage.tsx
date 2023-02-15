@@ -1,6 +1,6 @@
 import SellerProductList from "components/Seller/ProductList/SellerProductList";
 import { useState } from "react";
-import useDocumentTitle from "components/hooks/useDocumentTitle";
+import useDocumentTitle from "pages/hooks/useDocumentTitle";
 
 import * as S from "./SellerPage.styled";
 

@@ -1,8 +1,8 @@
-import InputField from "components/Form/FormCommon/InputField";
-import ValidationMessage from "components/Form//FormCommon/ValidationMessage";
-import Form from "components/Form/FormCommon/Form";
-import useLoginForm from "./useLoginForm";
-import SubmitBtn from "components/Form//FormCommon/SubmitBtn";
+import InputField from "components/Form/FormCommon/InputField/InputField";
+import ValidationMessage from "components/Form/FormCommon/ValidationMessage/ValidationMessage";
+import Form from "components/Form/FormCommon/Form/Form";
+import useLoginForm from "./hooks/useLoginForm";
+import SubmitBtn from "components/Form//FormCommon/SubmitBtn/SubmitBtn";
 import * as S from "./LoginFormStyle";
 import { useContext } from "react";
 import { FormContext } from "components/Form/FormCommon/FormProvider";
@@ -39,12 +39,14 @@ export default function LoginForm() {
           type="username"
           name="username"
           className={"loginForm username"}
+          placeholder={"아이디를 입력하세요"}
         />
         <ValidationMessage name="username" />
         <InputField
           type="password"
           name="password"
           className={"loginForm password"}
+          placeholder={"비밀번호를 입력하세요"}
         />
         <ValidationMessage name="password" />
         {showErrorFormServer && <S.ErrorMsg>{msgFromServer}</S.ErrorMsg>}

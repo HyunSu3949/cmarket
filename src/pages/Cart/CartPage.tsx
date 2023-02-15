@@ -1,5 +1,5 @@
 import CartList from "components/Cart/CartList/CartList";
-import useDocumentTitle from "components/hooks/useDocumentTitle";
+import useDocumentTitle from "pages/hooks/useDocumentTitle";
 
 export default function CartPage() {
   useDocumentTitle({

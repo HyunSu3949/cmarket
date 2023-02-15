@@ -6,7 +6,7 @@ import SellerSignUpForm from "components/Form/SignUpForm/Seller/SellerSignUpForm
 import * as S from "./SignUpPage.style";
 import logo from "assets/images/Logo-hodu.png";
 import { Link } from "react-router-dom";
-import useDocumentTitle from "components/hooks/useDocumentTitle";
+import useDocumentTitle from "pages/hooks/useDocumentTitle";
 
 export default function SignUpPage() {
   useDocumentTitle({

@@ -1,9 +1,11 @@
-import { ReactElement } from "react";
 import { useIsFetching, useIsMutating } from "react-query";
 import styled from "styled-components";
 import spinner from "assets/images/spinner.gif";
 
-export default function Loading(): ReactElement {
+type Props = {
+  className?: string;
+};
+export default function Loading({ className }: Props) {
   const isFetching = useIsFetching();
   const isMutating = useIsMutating();
 
@@ -14,6 +16,7 @@ export default function Loading(): ReactElement {
       style={{
         display: `${display}`,
       }}
+      className={className}
     >
       <img src={spinner} alt="로딩스피너" />
     </Div>
@@ -30,4 +33,12 @@ const Div = styled.div`
   align-items: center;
   width: 100%;
   height: calc(100% - 90px);
+
+  ${(props) =>
+    props.className === "form" &&
+    `  position: static;
+
+      width:fit-content;
+      height:fit-content;
+    `}
 `;

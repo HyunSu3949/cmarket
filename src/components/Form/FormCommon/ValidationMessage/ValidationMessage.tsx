@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { FormContext } from "./FormProvider";
+import { FormContext } from "../FormProvider";
 import styled from "styled-components";
 
 export default function ValidationMessage({ name }: { name: string }) {

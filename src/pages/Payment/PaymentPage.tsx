@@ -8,7 +8,7 @@ import DirectOrderProduct from "components/Payment/DirectOrderProduct/DirectOrde
 import useCart from "components/Cart/hooks/useCart";
 import * as S from "./PaymentPage.style";
 import { toLocaleString } from "components/Form/utils/toLocaleString";
-import useDocumentTitle from "components/hooks/useDocumentTitle";
+import useDocumentTitle from "pages/hooks/useDocumentTitle";
 
 type Props = {
   order_kind: "cart_order" | "cart_one_order" | "direct_order";
