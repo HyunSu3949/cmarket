@@ -113,3 +113,7 @@ export const MyPageBtn = styled.button`
 export const BtnWrapper = styled.div`
   display: flex;
 `;
+
+export const SearchWrapper = styled.div`
+  position: relative;
+`;

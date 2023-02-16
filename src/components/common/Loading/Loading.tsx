@@ -26,7 +26,6 @@ export default function Loading({ className }: Props) {
 const Div = styled.div`
   position: absolute;
   top: 90px;
-  background-color: white;
   z-index: 10;
   display: flex;
   justify-content: center;
@@ -37,7 +36,12 @@ const Div = styled.div`
   ${(props) =>
     props.className === "form" &&
     `  position: static;
-
+      width:fit-content;
+      height:fit-content;
+    `}
+  ${(props) =>
+    props.className === "search_result" &&
+    `  position: static;
       width:fit-content;
       height:fit-content;
     `}

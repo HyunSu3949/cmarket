@@ -1,6 +1,13 @@
 import styled from "styled-components";
 import search from "assets/images/search.png";
 
+export const Wrapper = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+`;
+
 export const Input = styled.input.attrs({
   placeholder: "상품을 검색해보세요!",
 })`

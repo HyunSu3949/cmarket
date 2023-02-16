@@ -1,6 +1,6 @@
-import SearchBar from "components/Search/SearchBar";
+import SearchBar from "components/Search/SearchBar/SearchBar";
 import useModals from "components/modal/hooks/useModals";
-import { useContext } from "react";
+import { useContext, useState, useCallback } from "react";
 import { AuthContext } from "lib/auth/AuthProvider/AuthProvider";
 import { modals } from "components/modal/Modals";
 import * as S from "./Navbar.style";
@@ -11,6 +11,7 @@ export default function NavBar() {
   const { isLogedIn, loginType, handleLogout } = useContext(AuthContext);
 
   const { openModal } = useModals();
+
   const openMyModal = () => {
     openModal(modals.myModal, {
       onLogout: () => {
