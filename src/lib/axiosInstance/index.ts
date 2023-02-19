@@ -45,6 +45,19 @@ export const axiosInstanceMultiForm = axios.create({
   baseURL: baseUrl,
   headers: {
     "Content-Type": "multipart/form-data",
-    Authorization: `JWT  ${localStorage.getItem("token")}`,
   },
 });
+
+axiosInstanceMultiForm.interceptors.request.use(
+  (config: any) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      config = { ...config };
+      config.headers = { ...config.headers } || {};
+      config.headers.Authorization = `JWT  ${token}`;
+    }
+
+    return config;
+  },
+  (error) => Promise.reject(error)
+);

@@ -41,7 +41,8 @@ const Div = styled.div`
     `}
   ${(props) =>
     props.className === "search_result" &&
-    `  position: static;
+    ` 
+    position: static;
       width:fit-content;
       height:fit-content;
     `}

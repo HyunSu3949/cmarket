@@ -61,7 +61,7 @@ export default function useCart() {
 
   const productDataList = useQueries(
     cartList.map((item) => ({
-      queryKey: ["getProduct", item.product_id],
+      queryKey: ["product", item.product_id],
       queryFn: () => getProduct(item.product_id),
     }))
   );

@@ -34,9 +34,9 @@ export default function MultiPartForm({
 
     const formData = new FormData();
 
-    Object.entries(values).forEach((value) =>
-      formData.append(value[0], value[1])
-    );
+    Object.entries(values).forEach((value) => {
+      formData.append(value[0], value[1]);
+    });
 
     if (canSubmit()) {
       return;

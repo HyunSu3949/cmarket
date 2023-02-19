@@ -8,9 +8,7 @@ async function getMyOrder() {
 
 export default function useMyOrder() {
   const { data } = useQuery(["myorder"], getMyOrder, {
-    onSuccess: (data) => {
-      console.log(data);
-    },
+    onSuccess: (data) => {},
   });
 
   return { data };

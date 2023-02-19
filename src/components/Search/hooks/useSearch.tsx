@@ -10,8 +10,6 @@ async function searchProduct(keyword: string) {
 
 export default function useSearch() {
   const [keyword, setKeyword] = useState("");
-  console.log(keyword);
-
   const onChangeInput = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       debounce(setKeyword(e.target.value), 500);
